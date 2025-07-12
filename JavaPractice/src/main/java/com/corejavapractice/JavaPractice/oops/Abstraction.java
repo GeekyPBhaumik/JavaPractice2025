@@ -13,7 +13,7 @@ package com.corejavapractice.JavaPractice.oops;
 
 abstract class Shape{
     private String color;
-    abstract public double area();
+    public abstract double area();
     public String getColor(){
       return color;
     }
