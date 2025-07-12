@@ -1,19 +1,20 @@
 Java OOPs Concepts:
-Encapsulation
-Abstraction
+Encapsulation(done)
+Abstraction(Abstract Class(done), Interface(done))
 Polymorphism (Method Overloading, Method Overriding)
 Inheritance (Types of Inheritance)
 Importance of OOPs
 
 Java Fundamentals:
 JDK, JVM, JRE, JIT
-How Java File is converted to .class file (Intermediary bytecode)
+How Java .File is converted to .class file (Intermediary bytecode)
 Why Java is platform-independent
 Why Java is not fully object-oriented
 Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)
 Data types in Java (Primitive, Non-primitive)
 
-Some Features of Java
+Some Features of Java - Java is pass by value
+How to make clone objects of Java - diff ways(Reflection)
 Operators
 Wrapper classes
 Autoboxing, Unboxing (Type Conversion)
