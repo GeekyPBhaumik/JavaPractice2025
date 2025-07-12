@@ -1,0 +1,133 @@
+Java OOPs Concepts:
+Encapsulation
+Abstraction
+Polymorphism (Method Overloading, Method Overriding)
+Inheritance (Types of Inheritance)
+Importance of OOPs
+
+Java Fundamentals:
+JDK, JVM, JRE, JIT
+How Java File is converted to .class file (Intermediary bytecode)
+Why Java is platform-independent
+Why Java is not fully object-oriented
+Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)
+Data types in Java (Primitive, Non-primitive)
+
+Some Features of Java
+Operators
+Wrapper classes
+Autoboxing, Unboxing (Type Conversion)
+main() method (psvm, int to INTEGER, INTEGER to int)
+
+Access Modifiers
+Java packages (java.util, java.lang, java.time, java.io, java.sql)
+Classes and Objects:
+Classes & Objects
+Abstract Class vs. Interface(Marker Interfaces)
+Singleton class in Java
+Java not supporting multiple inheritance through classes
+Object class in Java
+Inner class in Java
+Anonymous class
+Throwable class in Java
+
+Strings:
+Strings, Heap Memory, String Memory Pool
+String vs. StringBuffer vs. StringBuilder
+Immutable, StringJoiner
+
+Arrays:
+Arrays
+Multi-dimensional array
+Jagged Arrays
+
+Constructors and Methods:
+Construction, methods
+Association and Relationships:
+Association, Composition of Aggregation, IS-A, HAS-A Relation
+
+Memory Management:
+Memory Management (Heap Memory, Stack Memory, Local Variables, Object, Method Calls, Dynamic Object Reference)
+Garbage Collector in Java (System.gc(), explicit GC call, Memory allocation - fixed memory (by JVM))
+Memory Leaks in Java
+
+Avoiding Memory Leaks:
+Use WeakReference using WeakHashMap
+Avoid using static variables
+Use static nested class instead of non-static nested/inner class
+Intern the strings
+Use StringBuilder, StringBuffer
+Be cautious with substring
+
+Keywords:
+final keyword, abstract keyword, super keyword
+static keyword (Static class, Static method, Static block, Static nested class, can class be static)
+final keyword vs final method vs finally vs final variables (can class be final on static final)
+this keyword, enum keyword, transient keyword (helps in excluding sensitive or non-serializable data)
+
+I/O and Serialization:
+Scanner class vs BufferedReader class
+Files in Java, File Handling in Java (File InputStream, FileOutputStream, BufferedReader InputStream, BufferedReader OutputStream)
+Serialization/Deserialization
+Java IO (same as 27 - referring to File Handling)
+
+Flow Control and Regular Expressions:
+Regular Expressions in Java
+Flow Control in Java (if-else, for loop, for each, while loop, do-while loop, return, break, continue)
+Collections and Generics:
+Comparable, Comparator
+Collections.sort() (List, Comparator)
+compareTo (student.getname())
+PERMGEN, METASPACE (Special class that represents a group of constants)
+Enums are similar to a class
+
+Advanced Java Topics
+Multithreading in Java:
+What is a Thread
+Thread class, Methods
+Thread Creation (User-Defined Threads)
+Lifecycle of Thread
+Main Thread in Java (what is multithreading)
+Thread class vs Thread priority
+Runnable Interface
+How to name a Thread
+Difference between processes & Thread
+Difference between Thread class & Runnable Interface
+start() method, sleep() method & run() method
+Difference between start() & run() method
+Daemon Threads in Java
+Thread safety in Java, Thread scheduler in Java
+Synchronization in Java (Types of Synchronization, Synchronized block, Method synchronization vs Block synchronization)
+Atomic, Volatile & Synchronized modifier
+Deadlock in Multithreading
+Explain Inter-Thread Communication
+Producer/Consumer Problem
+Race-Condition Problem
+
+Concurrency:
+Callable & Future, CompletableFuture (Java 8)
+Executor Framework
+Concurrency Utilities
+Fork/Join Framework (Parallel Streams)
+Concurrent Collections (ConcurrentHashMap, ConcurrentLinkedQueue, CopyOnWriteArrayList)
+Runnable, Callable
+Blocking Queue
+Lock
+Atomic Integer
+Fail Safe, Fail Fast
+
+Exceptions:
+Exceptions in Java (Types of Exception)
+Errors in Java (Types of Error)
+Difference between Error & Exception
+Exception Handling (try, catch, multi-catch)
+Practice User-Defined Exceptions
+throws, throw, finally
+
+Checked & Unchecked Exceptions:
+Checked: IOException, SQLException, ClassNotFoundException
+Unchecked: NullPointerException, ArrayIndexOutOfBoundsException, User-Defined Exception
+Exception Handling with Method Overriding
+Exception Handling in Spring Boot using @ExceptionHandler, @RestControllerAdvice
+
+Best Coding Practice for writing Exceptions
