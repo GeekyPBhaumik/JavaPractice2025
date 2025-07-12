@@ -1,5 +1,9 @@
 package com.corejavapractice.JavaPractice.oops;
 
+/**
+ * Abstraction is the process of hiding the implementation details and
+ * showing only the essential details to user.
+ */
 //Abstract class is used to achieve abstraction in Java that is partial abstraction
 //Abstract classes can have both abstract as well as non-abstract(concrete) methods
 //Abstract class is declared using an abstract keyword
