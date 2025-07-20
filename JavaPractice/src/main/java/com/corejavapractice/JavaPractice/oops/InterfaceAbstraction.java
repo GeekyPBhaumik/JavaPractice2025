@@ -11,7 +11,7 @@ package com.corejavapractice.JavaPractice.oops;
 
    An interface represents an 'IS-A' relationship because a class
    which implements the interface behaves as per the behaviour declaration provided in the interface
-   Like a Dog class implements the behaviour of an interface
+   Like a Dog class implements the behaviour of an interface Animal.
    So A Dog class IS-A Animal. Or Dog extends Animal class.
    In both cases, Animal represents IS-A relationship
    Basically it is either inheriting an Animal class
