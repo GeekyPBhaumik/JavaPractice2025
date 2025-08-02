@@ -17,6 +17,11 @@ package com.corejavapractice.JavaPractice.oops;
    Basically it is either inheriting an Animal class
    or behaving like an Animal interface so in this way
    interface represents an IS-A relationship
+
+   The "is-a" relationship represents inheritance.
+   It signifies that one class is a specialized version of another class. In Java,
+   this is achieved using the extends keyword for classes
+   and the implements keyword for interfaces.
  */
 
 interface Vehicle{
