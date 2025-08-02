@@ -1,0 +1,21 @@
+1. Importance of OOPs:
+The importance of OOP in Java boils down to building maintainable, scalable, and robust applications that are easier to collaborate on.
+Importance of OBJECT ORIENTED PROGRAMMING:
+
+Encapsulation:(Modularity)
+this is about creating self-contained units of code – objects – that bundle data and behavior
+I've used encapsulation extensively to ensure data integrity and control access
+
+Inheritance:(Code Reusability)
+This isn't just about avoiding copy-pasting; it's about establishing clear 'is-a' (inheritance) and 'has-a' (composition) relationships to build upon existing functionality.
+
+Polymorphism(Flexibility and Extensibility): It increases the extensibility and code resuability
+Instead of long if-else if chains or switch statements checking instanceof
+to determine an object's type and call specific methods
+(e.g., if (animal instanceof Dog) { ((Dog)animal).bark(); }),
+polymorphism allows us to write concise, generic code that handlesvarious types uniformly
+This makes it incredibly easy to add new report types in the future without modifying existing code.
+
+Abstraction(controlled access):
+While encapsulation is about how an object's internal state is managed,
+abstraction is about hiding complex implementation details and exposing only the essential features or 'what' an object does
