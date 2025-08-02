@@ -10,12 +10,42 @@ Inheritance:(Code Reusability)
 This isn't just about avoiding copy-pasting; it's about establishing clear 'is-a' (inheritance) and 'has-a' (composition) relationships to build upon existing functionality.
 
 Polymorphism(Flexibility and Extensibility): It increases the extensibility and code resuability
-Instead of long if-else if chains or switch statements checking instanceof
-to determine an object's type and call specific methods
-(e.g., if (animal instanceof Dog) { ((Dog)animal).bark(); }),
-polymorphism allows us to write concise, generic code that handlesvarious types uniformly
+Instead of long if-else if chains or switch statements checking instanceof to determine an object's type and call specific methods (e.g., if (animal instanceof Dog) { ((Dog)animal).bark(); }), polymorphism allows us to write concise, generic code that handlesvarious types uniformly
 This makes it incredibly easy to add new report types in the future without modifying existing code.
 
 Abstraction(controlled access):
-While encapsulation is about how an object's internal state is managed,
-abstraction is about hiding complex implementation details and exposing only the essential features or 'what' an object does
+While encapsulation is about how an object's internal state is managed, abstraction is about hiding complex implementation details and exposing only the essential features or 'what' an object does
+
+
+2. Use of JIT
+I. Java Source Code (.java) → Bytecode (.class):
+First, you compile your Java source files using javac into platform-independent .class files containing bytecode.
+
+II. JVM Loads and Interprets Bytecode:
+When you launch a Java application (java YourMainClass), the JVM loads the necessary .class files.
+ Initially, the JVM's interpreter starts executing the bytecode instruction by instruction.
+ This allows for a quick startup time.
+
+III. Hot Spot Detection (Profiling):
+As the program runs, the JVM continuously monitors and profiles the execution.
+It keeps track of which methods, loops, or code blocks are being called or executed frequently.
+These frequently executed code segments are identified as "hot spots."
+The JVM maintains invocation counts for methods; when a method's invocation count crosses a certain threshold,
+it's flagged as a candidate for JIT compilation.
+
+IV. JIT Compilation:
+Once a method or code segment is identified as a hot spot,
+the JIT compiler (a component within the JVM) takes its bytecode and compiles it into highly optimized native machine code specific to the underlying CPU architecture (e.g., x86, ARM) and operating system (Windows, Linux, macOS).
+This compilation happens "just in time," while the application is running.
+
+
+3. Why java is both a compiled and interpreted language?
+It undergoes an explicit compilation step (from .java to .class bytecode)
+by the javac compiler when we run a java program.
+
+When you run a Java application, the Java Virtual Machine (JVM) loads these .class files.
+Initially, the JVM's interpreter component reads the bytecode instructions one by one and executes them directly.
+It translates each bytecode instruction into the underlying machine's specific instructions
+
+Crucially, the JIT compiler dynamically compiles frequently executed bytecode into native machine code at runtime,
+blending interpretation with on-the-fly compilation for performance and optimization.
