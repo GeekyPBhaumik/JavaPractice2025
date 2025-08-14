@@ -1,55 +1,137 @@
-1. Importance of OOPs:
-The importance of OOP in Java boils down to building maintainable, scalable, and robust applications that are easier to collaborate on.
-Importance of OBJECT ORIENTED PROGRAMMING:
+Java OOPs Concepts:
+Encapsulation(done)
+Abstraction(Abstract Class(done), Interface(done))
+Polymorphism (Method Overloading, Method Overriding)(done)
+Inheritance (Types of Inheritance)(done)
+Importance of OOPs(done)
 
-Encapsulation:(Modularity)
-this is about creating self-contained units of code – objects – that bundle data and behavior
-I've used encapsulation extensively to ensure data integrity and control access
+Java Fundamentals:
+JDK, JVM, JRE, JIT(done)
+How Java .java file is converted to .class file (Intermediary bytecode)(done)(done)
+Role of Java classloader(done)
+Why Java is platform-independent(done)
+Why Java is not fully object-oriented(done)
+Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)(done)
+Data types in Java (Primitive, Non-primitive)(done)
+(primitive types are basic pre-defined data types in java and non-primitive data types
+are basically references , they can be both pre-defined like String and user-defined like Custom class.
 
-Inheritance:(Code Reusability)
-This isn't just about avoiding copy-pasting; it's about establishing clear 'is-a' (inheritance) and 'has-a' (composition) relationships to build upon existing functionality.
+How Java is pass by value (done)
+How to make clone objects of Java - diff ways(Reflection)
+Operators
+Wrapper classes
+Autoboxing, Unboxing (Type Conversion)
+main() method (psvm, int to INTEGER, INTEGER to int)
 
-Polymorphism(Flexibility and Extensibility): It increases the extensibility and code resuability
-Instead of long if-else if chains or switch statements checking instanceof to determine an object's type and call specific methods (e.g., if (animal instanceof Dog) { ((Dog)animal).bark(); }), polymorphism allows us to write concise, generic code that handlesvarious types uniformly
-This makes it incredibly easy to add new report types in the future without modifying existing code.
+Access Modifiers
+Java packages (java.util, java.lang, java.time, java.io, java.sql)
+Classes and Objects:
+Classes & Objects
+Abstract Class vs. Interface(Marker Interfaces)
+Singleton class in Java
+Java not supporting multiple inheritance through classes
+Object class in Java
+Inner class in Java
+Anonymous class
+Throwable class in Java
 
-Abstraction(controlled access):
-While encapsulation is about how an object's internal state is managed, abstraction is about hiding complex implementation details and exposing only the essential features or 'what' an object does
+Strings:
+Strings, Heap Memory, String Memory Pool
+String vs. StringBuffer vs. StringBuilder
+Immutable, StringJoiner
 
+Arrays:
+Arrays
+Multi-dimensional array
+Jagged Arrays
 
-2. Use of JIT
-I. Java Source Code (.java) → Bytecode (.class):
-First, you compile your Java source files using javac into platform-independent .class files containing bytecode.
+Constructors and Methods:
+Construction, methods
+Association and Relationships:
+Association, Composition of Aggregation, IS-A, HAS-A Relation
 
-II. JVM Loads and Interprets Bytecode:
-When you launch a Java application (java YourMainClass), the JVM loads the necessary .class files.
- Initially, the JVM's interpreter starts executing the bytecode instruction by instruction.
- This allows for a quick startup time.
+Memory Management:
+Memory Management (Heap Memory, Stack Memory, Local Variables, Object, Method Calls, Dynamic Object Reference)
+Garbage Collector in Java (System.gc(), explicit GC call, Memory allocation - fixed memory (by JVM))
+Memory Leaks in Java
 
-III. Hot Spot Detection (Profiling):
-As the program runs, the JVM continuously monitors and profiles the execution.
-It keeps track of which methods, loops, or code blocks are being called or executed frequently.
-These frequently executed code segments are identified as "hot spots."
-The JVM maintains invocation counts for methods; when a method's invocation count crosses a certain threshold,
-it's flagged as a candidate for JIT compilation.
+Avoiding Memory Leaks:
+Use WeakReference using WeakHashMap
+Avoid using static variables
+Use static nested class instead of non-static nested/inner class
+Intern the strings
+Use StringBuilder, StringBuffer
+Be cautious with substring
 
-IV. JIT Compilation:
-Once a method or code segment is identified as a hot spot,
-the JIT compiler (a component within the JVM) takes its bytecode and compiles it into highly optimized native machine code specific to the underlying CPU architecture (e.g., x86, ARM) and operating system (Windows, Linux, macOS).
-This compilation happens "just in time," while the application is running.
+Keywords:
+final keyword, abstract keyword, super keyword
+static keyword (Static class, Static method, Static block, Static nested class, can class be static)
+final keyword vs final method vs finally vs final variables (can class be final on static final)
+this keyword, enum keyword, transient keyword (helps in excluding sensitive or non-serializable data)
 
+I/O and Serialization:
+Scanner class vs BufferedReader class
+Files in Java, File Handling in Java (File InputStream, FileOutputStream, BufferedReader InputStream, BufferedReader OutputStream)
+Serialization/Deserialization
+Java IO (same as 27 - referring to File Handling)
 
-3. Why java is both a compiled and interpreted language?
-It undergoes an explicit compilation step (from .java to .class bytecode)
-by the javac compiler when we run a java program.
+Flow Control and Regular Expressions:
+Regular Expressions in Java
+Flow Control in Java (if-else, for loop, for each, while loop, do-while loop, return, break, continue)
+Collections and Generics:
+Comparable, Comparator
+Collections.sort() (List, Comparator)
+compareTo (student.getname())
+PERMGEN, METASPACE (Special class that represents a group of constants)
+Enums are similar to a class
 
-When you run a Java application, the Java Virtual Machine (JVM) loads these .class files.
-Initially, the JVM's interpreter component reads the bytecode instructions one by one and executes them directly.
-It translates each bytecode instruction into the underlying machine's specific instructions
+Advanced Java Topics
+Multithreading in Java:
+What is a Thread
+Thread class, Methods
+Thread Creation (User-Defined Threads)
+Lifecycle of Thread
+Main Thread in Java (what is multithreading)
+Thread class vs Thread priority
+Runnable Interface
+How to name a Thread
+Difference between processes & Thread
+Difference between Thread class & Runnable Interface
+start() method, sleep() method & run() method
+Difference between start() & run() method
+Daemon Threads in Java
+Thread safety in Java, Thread scheduler in Java
+Synchronization in Java (Types of Synchronization, Synchronized block, Method synchronization vs Block synchronization)
+Atomic, Volatile & Synchronized modifier
+Deadlock in Multithreading
+Explain Inter-Thread Communication
+Producer/Consumer Problem
+Race-Condition Problem
 
-Crucially, the JIT compiler dynamically compiles frequently executed bytecode into native machine code at runtime,
-blending interpretation with on-the-fly compilation for performance and optimization.
+Concurrency:
+Callable & Future, CompletableFuture (Java 8)
+Executor Framework
+Concurrency Utilities
+Fork/Join Framework (Parallel Streams)
+Concurrent Collections (ConcurrentHashMap, ConcurrentLinkedQueue, CopyOnWriteArrayList)
+Runnable, Callable
+Blocking Queue
+Lock
+Atomic Integer
+Fail Safe, Fail Fast
 
-4. Role of Java classloader
-- Dynamically loads the .class files for JVM execution
-- Location .class files from different locations
+Exceptions:
+Exceptions in Java (Types of Exception)
+Errors in Java (Types of Error)
+Difference between Error & Exception
+Exception Handling (try, catch, multi-catch)
+Practice User-Defined Exceptions
+throws, throw, finally
+
+Checked & Unchecked Exceptions:
+Checked: IOException, SQLException, ClassNotFoundException
+Unchecked: NullPointerException, ArrayIndexOutOfBoundsException, User-Defined Exception
+Exception Handling with Method Overriding
+Exception Handling in Spring Boot using @ExceptionHandler, @RestControllerAdvice
+
+Best Coding Practice for writing Exceptions
