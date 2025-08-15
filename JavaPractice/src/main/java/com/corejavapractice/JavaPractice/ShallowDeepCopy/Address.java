@@ -1,19 +1,22 @@
-package com.corejavapractice.JavaPractice.corejava;
+package com.corejavapractice.JavaPractice.ShallowDeepCopy;
 
 public class Address implements Cloneable{
 
   public String city;
   public String country;
+  public String location;
 
   public Address(String location, String city, String country, int pincode){
       this.city = city;
       this.country = country;
+      this.location = location;
   }
 
   public Address(){}
 
+  @Override
   protected Object clone() throws CloneNotSupportedException{
-      return (Address)super.clone();
+      return super.clone();
   }
 
   @Override
@@ -21,6 +24,7 @@ public class Address implements Cloneable{
         return "Address{" +
                 "city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", location='" + location + '\'' +
                 '}';
   }
 }
