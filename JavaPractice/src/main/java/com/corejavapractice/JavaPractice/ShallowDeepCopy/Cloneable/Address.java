@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.ShallowDeepCopy;
+package com.corejavapractice.JavaPractice.ShallowDeepCopy.Cloneable;
 
 public class Address implements Cloneable{
 
@@ -11,8 +11,6 @@ public class Address implements Cloneable{
       this.country = country;
       this.location = location;
   }
-
-  public Address(){}
 
   @Override
   protected Object clone() throws CloneNotSupportedException{

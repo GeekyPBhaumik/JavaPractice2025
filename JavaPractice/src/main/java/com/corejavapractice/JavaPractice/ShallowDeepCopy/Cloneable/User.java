@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.ShallowDeepCopy;
+package com.corejavapractice.JavaPractice.ShallowDeepCopy.Cloneable;
 
 public class User  implements Cloneable{
     public String name;

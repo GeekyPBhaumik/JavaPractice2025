@@ -1,4 +1,4 @@
-Java OOPs Concepts:(done)
+Java OOPs Concepts:
 Encapsulation(done)
 Abstraction(Abstract Class(done), Interface(done))
 Polymorphism (Method Overloading, Method Overriding)(done)
@@ -6,19 +6,24 @@ Inheritance (Types of Inheritance)(done)
 Importance of OOPs(done)
 
 Java Fundamentals:
-JDK, JVM, JRE, JIT
-How Java .File is converted to .class file (Intermediary bytecode)
-Why Java is platform-independent
-Why Java is not fully object-oriented
-Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)
-Data types in Java (Primitive, Non-primitive)
+JDK, JVM, JRE, JIT(done)
+How Java .java file is converted to .class file (Intermediary bytecode)(done)(done)
+Role of Java classloader(done)
+Why Java is platform-independent(done)
+Why Java is not fully object-oriented(done)
+Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)(done)
+Data types in Java (Primitive, Non-primitive)(done)
+(primitive types are basic pre-defined data types in java and non-primitive data types
+are basically references , they can be both pre-defined like String and user-defined like Custom class.
 
-Some Features of Java - Java is pass by value
+How Java is pass by value (done)
 How to make clone objects of Java - diff ways(Reflection)
-Operators
-Wrapper classes
-Autoboxing, Unboxing (Type Conversion)
-main() method (psvm, int to INTEGER, INTEGER to int)
+Shallow copy vs Deep copy in Java(done)
+Operators (done)
+Wrapper classes (done)
+Autoboxing, Unboxing(int to INTEGER, INTEGER to int)  (done)
+Type Conversion - Widening or Implicit Conversion, Narrowing or Explicit Conversion(done)
+main() method (psvm) (done)
 
 Access Modifiers
 Java packages (java.util, java.lang, java.time, java.io, java.sql)
