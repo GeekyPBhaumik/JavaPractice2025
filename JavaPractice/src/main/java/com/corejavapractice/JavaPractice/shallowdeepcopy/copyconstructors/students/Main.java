@@ -1,16 +1,5 @@
 package com.corejavapractice.JavaPractice.shallowdeepcopy.copyconstructors.students;
 
-/*
-The concept of Copy Constructor is we will be creating a class in which we will be having a
-constructor which will take the parameter of its own object and any reference type it will create newly.
-as we can see in Student deep copy constructor, for courses, it is doing this.courses = new ArrayList<>();
-It is the first step for making a deep copy.
-Then from the object send in the copy constructor, we will copy the same contents in our reference type.
-While copying, we will use the new keyword for example: here Course so that changing the course class values
-also won't affect the original object which will eventually make it a deep copy.
-*/
-
-
 import java.util.ArrayList;
 import java.util.List;
 /*
