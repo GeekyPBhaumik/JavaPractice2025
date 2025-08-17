@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.ShallowDeepCopy.Cloneable;
+package com.corejavapractice.JavaPractice.shallowdeepcopy.cloneable;
 
 /**
  * Shallow copy is basically if we create a copy of another object, then changing the reference type field of the copied object

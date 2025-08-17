@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.ShallowDeepCopy.CopyConstructors.Students;
+package com.corejavapractice.JavaPractice.shallowdeepcopy.copyconstructors.students;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.ShallowDeepCopy.CopyConstructors.Employees;
+package com.corejavapractice.JavaPractice.shallowdeepcopy.copyconstructors.employees;
 
 import java.util.ArrayList;
 import java.util.List;
