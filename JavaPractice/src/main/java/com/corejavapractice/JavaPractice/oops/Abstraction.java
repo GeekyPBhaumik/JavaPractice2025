@@ -5,7 +5,7 @@ package com.corejavapractice.JavaPractice.oops;
  * showing only the essential details to user.
  */
 //Abstract class is used to achieve abstraction in Java that is partial abstraction
-//Abstract classes can have both abstract as well as non-abstract(concrete) methods
+//Abstract classes can have both abstract and non-abstract(concrete) methods
 //Abstract class is declared using an abstract keyword
 //Abstract classes cannot be instantiated
 //Class which extends an abstract class needs to override all the abstract classes
@@ -13,6 +13,7 @@ package com.corejavapractice.JavaPractice.oops;
 //When a class extends an abstract class in Java, if the abstract class has a constructor that takes parameters,
 // the subclass's constructor must explicitly call one of the abstract class's constructors
 // using the super() keyword.
+//A class in Java can only extend one abstract class.
 
 
 abstract class Shape{
