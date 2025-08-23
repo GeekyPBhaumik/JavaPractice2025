@@ -10,12 +10,12 @@ Its memory is allocated at the starting of the program by JVM itself.
 It's allocated memory dynamically and deallocated by the garbage collector itself.
 When we create a String using the new keyword it is stored in the Heap Memory
 and everytime it refers to a new location.
-String Memory Pool is a special area inside the Heap Memory itself
+String Constant Pool is a special area inside the Heap Memory itself
 which is present for the JVM to boost optimization.
 When we create a String literal,
 JVM first checks if there is any String with the same value,
 if it's present it returns the same memory location,
-if it's not present, it will create a new String literal in the memory location
+if it's not present, it will create a new String literal in the String Constant Pool
 */
 
 public class StringDemo {
