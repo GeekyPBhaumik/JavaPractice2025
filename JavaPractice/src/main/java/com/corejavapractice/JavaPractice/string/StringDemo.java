@@ -16,7 +16,7 @@ When we create a String literal,
 JVM first checks if there is any String with the same value,
 if it's present it returns the same memory location,
 if it's not present, it will create a new String literal in the memory location
- */
+*/
 
 public class StringDemo {
     public static void main(String[] args) {

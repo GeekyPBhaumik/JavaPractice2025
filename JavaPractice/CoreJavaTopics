@@ -25,20 +25,20 @@ Autoboxing, Unboxing(int to INTEGER, INTEGER to int)  (done)
 Type Conversion - Widening or Implicit Conversion, Narrowing or Explicit Conversion(done)
 main() method (psvm) (done)
 
-Access Modifiers
-Java packages (java.util, java.lang, java.time, java.io, java.sql)
-Classes and Objects:
-Classes & Objects
+Access Modifiers (done)
+Java packages (java.util, java.lang, java.time, java.io, java.sql) (done)
+Classes and Objects: (done)
+Classes & Objects (done)
 Abstract Class vs. Interface(Marker Interfaces)
-Singleton class in Java
-Java not supporting multiple inheritance through classes
-Object class in Java
-Inner class in Java
-Anonymous class
-Throwable class in Java
+Singleton class in Java(Eager Initialization and Lazy Initialization)(`Disadvantages and when to use) (done)
+Java not supporting multiple inheritance through classes (done)
+Object class in Java (done) - equals method needs to be overriden to update the comparison logic (done)
+Inner class in Java (Member Inner Class, Method with a local Inner Class, static nested Inner Class)(done)
+Anonymous class(done)
 
 Strings:
-Strings, Heap Memory, String Memory Pool
+Strings, Heap Memory, String Memory Pool(done)
+Strings are immutable in nature How & Why(done) - Security, Thread Safety, Performance and caching(hashcodes) (done)
 String vs. StringBuffer vs. StringBuilder
 Immutable, StringJoiner
 
@@ -123,6 +123,8 @@ Atomic Integer
 Fail Safe, Fail Fast
 
 Exceptions:
+Throwable class in Java
+Error
 Exceptions in Java (Types of Exception)
 Errors in Java (Types of Error)
 Difference between Error & Exception
