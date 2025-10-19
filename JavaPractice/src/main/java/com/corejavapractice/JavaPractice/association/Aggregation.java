@@ -19,8 +19,8 @@ import java.util.List;
 @Getter
 @Setter
 class Library{
-    String libraryName;
-    List<Book> books;
+    private String libraryName;
+    private List<Book> books;
     public Library(String libraryName, List<Book> books){
         this.libraryName = libraryName;
         this.books = new ArrayList<>();
@@ -36,8 +36,8 @@ class Library{
 
 @ToString
 class Book{
-    String bookName;
-    String authorName;
+    private String bookName;
+    private String authorName;
     public Book(String bookName, String authorName){
         this.bookName = bookName;
         this.authorName = authorName;
