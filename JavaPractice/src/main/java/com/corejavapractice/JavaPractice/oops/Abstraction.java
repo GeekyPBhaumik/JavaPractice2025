@@ -8,7 +8,7 @@ package com.corejavapractice.JavaPractice.oops;
 //Abstract classes can have both abstract and non-abstract(concrete) methods
 //Abstract class is declared using an abstract keyword
 //Abstract classes cannot be instantiated
-//Class which extends an abstract class needs to override all the abstract classes
+//Class which extends an abstract class needs to override all the abstract methods
 //We can create constructors for abstract class
 //When a class extends an abstract class in Java, if the abstract class has a constructor that takes parameters,
 // the subclass's constructor must explicitly call one of the abstract class's constructors
@@ -23,7 +23,6 @@ abstract class Shape{
       return color;
     }
     public Shape(String color){
-        System.out.println("Shape Constructor called");
         this.color = color;
     }
 }
