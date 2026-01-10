@@ -36,28 +36,33 @@ Object class in Java (done) - equals method needs to be overriden to update the 
 Inner class in Java (Member Inner Class, Method with a local Inner Class, static nested Inner Class)(done)
 Anonymous class(done)
 
-Strings:
+Strings:(done)
 Strings, Heap Memory, String Memory Pool(done)
 Strings are immutable in nature How & Why(done) - Security, Thread Safety, Performance and caching(hashcodes) (done)
-String vs. StringBuffer vs. StringBuilder
-Immutable, StringJoiner
+String vs. StringBuffer vs. StringBuilder(done)
+StringJoiner(done), join() static utility method of String class
+How to create your own immutable class in Java(DONE)
+
 
 Arrays:
-Arrays
-Multi-dimensional array
-Jagged Arrays
+Arrays (DONE)
+Multi-dimensional array (DONE)
+Jagged Arrays (DONE)
 
 Constructors and Methods:
-Construction, methods
+Construction, methods (DONE)
 Association and Relationships:
-Association, Composition of Aggregation, IS-A, HAS-A Relation
+Association, Composition of Aggregation, IS-A, HAS-A Relation(DONE)
 
 Memory Management:
-Memory Management (Heap Memory, Stack Memory, Local Variables, Object, Method Calls, Dynamic Object Reference)
-Garbage Collector in Java (System.gc(), explicit GC call, Memory allocation - fixed memory (by JVM))
-Memory Leaks in Java
+Memory Management (Heap Memory, Stack Memory, Local Variables, Object, Method Calls, Dynamic Object Reference)(DONE)
+Garbage Collector in Java (System.gc(), explicit GC call, Memory allocation - fixed memory (by JVM))(DONE)
+Memory Leaks in Java(DONE)
+Young Gen, Old Gen, Eden Space, Survivor Space(S0,S1), Young Gen->Old Gen promotion(DONE)
+PERMGEN, METASPACE (DONE)
+Mark and Sweep Algorithm(DONE)
 
-Avoiding Memory Leaks:
+Avoiding Memory Leaks:(DONE)
 Use WeakReference using WeakHashMap
 Avoid using static variables
 Use static nested class instead of non-static nested/inner class
@@ -66,26 +71,27 @@ Use StringBuilder, StringBuffer
 Be cautious with substring
 
 Keywords:
-final keyword, abstract keyword, super keyword
-static keyword (Static class, Static method, Static block, Static nested class, can class be static)
-final keyword vs final method vs finally vs final variables (can class be final on static final)
-this keyword, enum keyword, transient keyword (helps in excluding sensitive or non-serializable data)
+final keyword, abstract keyword, super keyword (DONE)
+final keyword vs final method vs finally vs final variables (DONE)
+can class be final or static final (DONE)
+STATIC keyword (DONE)
+this keyword, enum keyword, transient keyword (helps in excluding sensitive or  non-serializable data) (DONE)
 
 I/O and Serialization:
-Scanner class vs BufferedReader class
-Files in Java, File Handling in Java (File InputStream, FileOutputStream, BufferedReader InputStream, BufferedReader OutputStream)
-Serialization/Deserialization
+Scanner class vs BufferedReader class (DONE)
+Files in Java, File Handling in Java (File InputStream, FileOutputStream, BufferedReader InputStream, BufferedReader OutputStream) (DONE)
+Serialization/Deserialization (DONE)
 Java IO (same as 27 - referring to File Handling)
 
 Flow Control and Regular Expressions:
-Regular Expressions in Java
-Flow Control in Java (if-else, for loop, for each, while loop, do-while loop, return, break, continue)
+Regular Expressions in Java (DONE)
+Flow Control in Java (if-else, for loop, for each, while loop, do-while loop, return, break, continue) (DONE)
 Collections and Generics:
 Comparable, Comparator
 Collections.sort() (List, Comparator)
 compareTo (student.getname())
-PERMGEN, METASPACE (Special class that represents a group of constants)
-Enums are similar to a class
+PERMGEN, METASPACE
+Enums are similar to a class (DONE - as part of enum keyword - Special class that represents a group of constants)
 
 Advanced Java Topics
 Multithreading in Java:
@@ -123,14 +129,14 @@ Atomic Integer
 Fail Safe, Fail Fast
 
 Exceptions:
-Throwable class in Java
-Error
-Exceptions in Java (Types of Exception)
-Errors in Java (Types of Error)
-Difference between Error & Exception
-Exception Handling (try, catch, multi-catch)
-Practice User-Defined Exceptions
-throws, throw, finally
+Throwable class in Java(DONE)
+Error(DONE)
+Exceptions in Java (Types of Exception)(DONE)
+Errors in Java (Types of Error - Compile-Time(Syntax Errors), RuntimeErrros(Exception) (DONE)
+Difference between Error & Exception (DONE)
+Exception Handling (try, catch, multi-catch) (DONE)
+Practice User-Defined Exceptions (DONE)
+throws, throw, finally (DONE)
 
 Checked & Unchecked Exceptions:
 Checked: IOException, SQLException, ClassNotFoundException
@@ -138,4 +144,4 @@ Unchecked: NullPointerException, ArrayIndexOutOfBoundsException, User-Defined Ex
 Exception Handling with Method Overriding
 Exception Handling in Spring Boot using @ExceptionHandler, @RestControllerAdvice
 
-Best Coding Practice for writing Exceptions
+Best Coding Practice for writing Exceptions                                                                            0

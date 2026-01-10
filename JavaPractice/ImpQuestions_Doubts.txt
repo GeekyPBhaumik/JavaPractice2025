@@ -1,137 +1,818 @@
-Java OOPs Concepts:
-Encapsulation(done)
-Abstraction(Abstract Class(done), Interface(done))
-Polymorphism (Method Overloading, Method Overriding)(done)
-Inheritance (Types of Inheritance)(done)
-Importance of OOPs(done)
+1. Importance of OOPs:
+The importance of OOP in Java boils down to building maintainable, scalable, and robust applications that are easier to collaborate on.
+Importance of OBJECT ORIENTED PROGRAMMING:
 
-Java Fundamentals:
-JDK, JVM, JRE, JIT(done)
-How Java .java file is converted to .class file (Intermediary bytecode)(done)(done)
-Role of Java classloader(done)
-Why Java is platform-independent(done)
-Why Java is not fully object-oriented(done)
-Java is interpreted or compiled-language (clarification needed here, it's compiled to bytecode and then interpreted/JIT compiled)(done)
-Data types in Java (Primitive, Non-primitive)(done)
-(primitive types are basic pre-defined data types in java and non-primitive data types
-are basically references , they can be both pre-defined like String and user-defined like Custom class.
+Encapsulation:(Modularity)
+this is about creating self-contained units of code – objects – that bundle data and behavior
+I've used encapsulation extensively to ensure data integrity and control access
 
-How Java is pass by value (done)
-How to make clone objects of Java - diff ways(Reflection)
-Operators
-Wrapper classes
-Autoboxing, Unboxing (Type Conversion)
-main() method (psvm, int to INTEGER, INTEGER to int)
+Inheritance:(Code Reusability)
+This isn't just about avoiding copy-pasting; it's about establishing clear 'is-a' (inheritance) and 'has-a' (composition) relationships to build upon existing functionality.
 
-Access Modifiers
-Java packages (java.util, java.lang, java.time, java.io, java.sql)
-Classes and Objects:
-Classes & Objects
-Abstract Class vs. Interface(Marker Interfaces)
-Singleton class in Java
-Java not supporting multiple inheritance through classes
-Object class in Java
-Inner class in Java
-Anonymous class
-Throwable class in Java
+Polymorphism(Flexibility and Extensibility): It increases the extensibility and code resuability 
+Instead of long if-else if chains or switch statements checking instanceof to determine an object's type and call specific methods (e.g., if (animal instanceof Dog) { ((Dog)animal).bark(); }), polymorphism allows us to write concise, generic code that handlesvarious types uniformly
+This makes it incredibly easy to add new report types in the future without modifying existing code.
 
-Strings:
-Strings, Heap Memory, String Memory Pool
-String vs. StringBuffer vs. StringBuilder
-Immutable, StringJoiner
+Abstraction(controlled access):
+While encapsulation is about how an object's internal state is managed, abstraction is about hiding complex implementation details and exposing only the essential features or 'what' an object does
 
-Arrays:
+
+2. Use of JIT
+I. Java Source Code (.java) → Bytecode (.class):
+First, you compile your Java source files using javac into platform-independent .class files containing bytecode.
+
+II. JVM Loads and Interprets Bytecode:
+When you launch a Java application (java YourMainClass), the JVM loads the necessary .class files. Initially, the JVM's interpreter starts executing the bytecode instruction by instruction. This allows for a quick startup time.
+
+III. Hot Spot Detection (Profiling):
+As the program runs, the JVM continuously monitors and profiles the execution. It keeps track of which methods, loops, or code blocks are being called or executed frequently. These frequently executed code segments are identified as "hot spots." The JVM maintains invocation counts for methods; when a method's invocation count crosses a certain threshold, it's flagged as a candidate for JIT compilation.
+
+IV. JIT Compilation:
+Once a method or code segment is identified as a hot spot, the JIT compiler (a component within the JVM) takes its bytecode and compiles it into highly optimized native machine code specific to the underlying CPU architecture (e.g., x86, ARM) and operating system (Windows, Linux, macOS). This compilation happens "just in time," while the application is running. 
+
+3. Why java is both a compiled and interpreted language?
+It undergoes an explicit compilation step (from .java to .class bytecode) by the javac compiler when we run a java program.
+
+When you run a Java application, the Java Virtual Machine (JVM) loads these .class files. Initially, the JVM's interpreter component reads the bytecode instructions one by one and executes them directly. It translates each bytecode instruction into the underlying machine's specific instructions
+
+Crucially, the JIT compiler dynamically compiles frequently executed bytecode into native machine code at runtime, blending interpretation with on-the-fly compilation for performance and optimization.
+
+4. Role of Java classloader
+- Dynamically loads the .class files for JVM execution
+- Location .class files from different locations
+
+5. Primitive and Non-Primitive Data Types:
+In Java, primitive data types are the predefined, basic data types provided by the language to represent simple values.
+
+On the other hand, non-primitive data types (also called reference types) are either:
+Objects of classes (user-defined or built-in) — e.g., String, Scanner, custom classes
 Arrays
-Multi-dimensional array
-Jagged Arrays
+Interfaces
+Enums
 
-Constructors and Methods:
-Construction, methods
-Association and Relationships:
-Association, Composition of Aggregation, IS-A, HAS-A Relation
+6. How Java is pass-by-value?
+Java is strictly pass-by-value, meaning it always passes a copy of variables to methods. 
+For primitive types, the actual value is copied. 
+For objects, the reference (memory address) is copied, allowing the method to modify the object’s internal state but not the reference itself.
+Obj ob1 = new Obj(); // Object in memory at address 0x1234
+method(ob1);         // You are passing the *value* 0x1234
 
-Memory Management:
-Memory Management (Heap Memory, Stack Memory, Local Variables, Object, Method Calls, Dynamic Object Reference)
-Garbage Collector in Java (System.gc(), explicit GC call, Memory allocation - fixed memory (by JVM))
-Memory Leaks in Java
+int a = 5;
+method(a);           // You are passing the *value* 5
 
-Avoiding Memory Leaks:
-Use WeakReference using WeakHashMap
-Avoid using static variables
-Use static nested class instead of non-static nested/inner class
-Intern the strings
-Use StringBuilder, StringBuffer
-Be cautious with substring
 
-Keywords:
-final keyword, abstract keyword, super keyword
-static keyword (Static class, Static method, Static block, Static nested class, can class be static)
-final keyword vs final method vs finally vs final variables (can class be final on static final)
-this keyword, enum keyword, transient keyword (helps in excluding sensitive or non-serializable data)
+7. Why Java allows default values at class level variables but not at method/local level?
+Java allows default values for class-level variables (fields) because they are part of the object's state, 
+which Java's runtime can control and initialize.
+Java does not allow default values for local variables (inside methods) to prevent bugs and enforce explicit, safe programming practices.
 
-I/O and Serialization:
-Scanner class vs BufferedReader class
-Files in Java, File Handling in Java (File InputStream, FileOutputStream, BufferedReader InputStream, BufferedReader OutputStream)
-Serialization/Deserialization
-Java IO (same as 27 - referring to File Handling)
+8. Where Default Values Are Used:
+Instance Variables (declared in a class but outside any method)
+Static Variables (class-level variables)
+Array Elements
 
-Flow Control and Regular Expressions:
-Regular Expressions in Java
-Flow Control in Java (if-else, for loop, for each, while loop, do-while loop, return, break, continue)
-Collections and Generics:
-Comparable, Comparator
-Collections.sort() (List, Comparator)
-compareTo (student.getname())
-PERMGEN, METASPACE (Special class that represents a group of constants)
-Enums are similar to a class
+9. Shallow copy vs Deep copy:
+Shallow copy: A copy of an object where changing the state of a mutable reference-type field in the copy will also change the state of the original's corresponding field, because they both point to the same underlying object. 
+However, changing a primitive field in the copy will not affect the original.
 
-Advanced Java Topics
-Multithreading in Java:
-What is a Thread
-Thread class, Methods
-Thread Creation (User-Defined Threads)
-Lifecycle of Thread
-Main Thread in Java (what is multithreading)
-Thread class vs Thread priority
-Runnable Interface
-How to name a Thread
-Difference between processes & Thread
-Difference between Thread class & Runnable Interface
-start() method, sleep() method & run() method
-Difference between start() & run() method
-Daemon Threads in Java
-Thread safety in Java, Thread scheduler in Java
-Synchronization in Java (Types of Synchronization, Synchronized block, Method synchronization vs Block synchronization)
-Atomic, Volatile & Synchronized modifier
-Deadlock in Multithreading
-Explain Inter-Thread Communication
-Producer/Consumer Problem
-Race-Condition Problem
+class Person {
+    int age;
+    String name;
+    Address address; // A mutable reference-type object
+}
+Deep copy: A copy of an object where both the primitive and reference-type fields are fully independent of the original. Changing any state in the copy will not affect the original object.
 
-Concurrency:
-Callable & Future, CompletableFuture (Java 8)
-Executor Framework
-Concurrency Utilities
-Fork/Join Framework (Parallel Streams)
-Concurrent Collections (ConcurrentHashMap, ConcurrentLinkedQueue, CopyOnWriteArrayList)
-Runnable, Callable
-Blocking Queue
-Lock
-Atomic Integer
-Fail Safe, Fail Fast
+10. Diff between ++a and a++?
+(++a - value is updated, then used , a++ - value is used, then updated)
 
-Exceptions:
-Exceptions in Java (Types of Exception)
-Errors in Java (Types of Error)
-Difference between Error & Exception
-Exception Handling (try, catch, multi-catch)
-Practice User-Defined Exceptions
-throws, throw, finally
+11. Wrapper class in Java
+Wrapper classes in Java are a set of classes that allow primitive data types (like int, char, boolean, float, double, long, byte, short) to be treated as objects.
 
-Checked & Unchecked Exceptions:
-Checked: IOException, SQLException, ClassNotFoundException
-Unchecked: NullPointerException, ArrayIndexOutOfBoundsException, User-Defined Exception
-Exception Handling with Method Overriding
-Exception Handling in Spring Boot using @ExceptionHandler, @RestControllerAdvice
+12. Widening and Narrowing type conversion
+Widening is the conversion of a lower data type to that of a higher data type
+int x = 20;
+double y = x;
+Narraowing is the conversion of higher data type to that of a lower data type
+float f = 20.0;
+int z = (int)f;
 
-Best Coding Practice for writing Exceptions
+13. PSVM(PUBLIC STATIC VOID MAIN(String args[])
+public: The main method is public so that JVM can call it from anywhere to start the program as main method
+is the entry point of a program
+static: A main method is static so that JVM can directly call it using the class name without needing to create the class object.
+void: This indicates that the main method does not return any value. Once the program finishes its execution in the main method, it simply terminates.
+main: This is just the name of a method which JVM looks for to start the execution.
+String[] args: This is the parameter list. It specifies that the main method accepts a single argument, which is an array of String objects. These strings are typically used to receive command-line arguments when the program is executed.
+For example, if you run a program from the command line like java MyProgram arg1 arg2, the args array inside the main method will contain {"arg1", "arg2"}.
+
+
+14. How to make clone objects of Java - diff ways
+- Using Cloneable Interface and clone method.
+- Using Copy Constructor
+- Using Serialization
+- Using Reflection API
+- Using SerializationUtils
+
+
+15. Copy Constructors:
+The concept of Copy Constructor is we will be creating a class in which we will be having a
+constructor which will take the parameter of its own object and any reference type it will create newly.
+as we can see in Student deep copy constructor, for courses, it is doing this.courses = new ArrayList<>();
+It is the first step for making a deep copy.
+Then from the object send in the copy constructor, we will copy the same contents in our reference type.
+While copying, we will use the new keyword for example: here Course so that changing the course class values
+also won't affect the original object which will eventually make it a deep copy.
+
+More understandable with a coding example
+
+
+16. Access Modifiers: Access modifiers in Java are keywords that control the visibility and accessibility of classes, interfaces, variables, methods, and constructors within a Java program. 
+The Four Modifiers:
+
+public: Accessible from anywhere.
+protected: Accessible within the same package and by subclasses (even if they are in a different package).
+default (package-private): Accessible only within the same package.
+private: Accessible only within the same class.
+
+17. Diff packages:
+java.util: This is a collection of utility classes.
+Common Classes: ArrayList, HashMap, Scanner, Date, Random.
+Briefly: A toolbox of helpful, general-purpose classes.
+
+java.lang: This package contains fundamental classes and interfaces that are essential for the Java language. 
+Common Classes: String, Math, Integer, System, Object.
+Briefly: The core building blocks of the Java language.
+
+java.time: This package was introduced in Java 8 to provide a new, modern, and immutable date and time API. It offers significant improvements over the older java.util.Date and java.util.Calendar classes.
+Common Classes: LocalDate, LocalTime, LocalDateTime, ZonedDateTime.
+Briefly: A superior and modern API for handling dates and times.
+
+java.io: This package provides classes for system input and output operations. It includes classes for reading from and writing to various sources, such as files, streams, and data buffers.
+Common Classes: File, FileInputStream, FileOutputStream, BufferedReader, PrintWriter.
+Briefly: The API for handling all types of input and output.
+
+java.sql: This package provides the classes and interfaces for the Java Database Connectivity (JDBC) API. It is used for connecting to databases, executing SQL queries, and processing the results.
+Commom Classes: Statement, Conenction, ResultSet etc.
+
+
+18. What is an instance variable?
+
+Expected Answer: An instance variable is a variable defined within a class but outside of any method, constructor, or block. Each object of the class will have its own copy of the instance variable.
+
+19. What is a class variable (static variable)?
+
+Expected Answer: A class variable is a variable declared with the static keyword. It belongs to the class itself, not to any specific object. There is only one copy of a static variable, shared by all objects of the class.
+
+20. Class and Object:
+Class is a blueprint or template for creating an object. It defines the state(field/variables) and behaviour(methods), an object will have. It is a logical entity.
+Object is an instance of a class. It is a real-world entity which will have state and behaviour.
+It is a physical entity that occupies some space in memory.
+
+21. Marker Interfaces in Java
+A marker interface is a special type of interface in Java that has no methods, no fields, and no constants. Its sole purpose is to "mark" or "tag" a class, providing extra information to the Java compiler, runtime environment, or other tools.
+
+The java.lang.Cloneable and java.io.Serializable interfaces are two classic examples of marker interfaces.
+
+When a class implements a marker interface, it tells the compiler or JVM that the class has a certain capability or property. For example:
+ - Implementing java.io.Serializable tells the JVM that objects of this class can be converted into a stream of bytes and saved   	(serialized).
+
+ - Implementing java.lang.Cloneable tells the Object class's clone() method that it is safe to make a field-by-field copy of an  instance.
+ 
+22. Abstract Class vs. Interface 
+Type of Members:
+Abstract Class: Can have both abstract methods (with no body) and concrete methods (with a body).
+Interface: Can only have abstract methods (with no body) before Java 8. From Java 8 and later, they can also have default and static methods.
+
+Variables:
+Abstract Class: Can have instance variables with any access modifier (private, protected, public).
+Interface: All variables are implicitly public static final (meaning they are constants).
+
+Constructors:
+Abstract Class: Can have constructors.
+Interface: Cannot have constructors.
+
+Inheritance:
+Abstract Class: A class can only extend one abstract class.
+Interface: A class can implement multiple interfaces.
+
+Access Modifiers:
+Abstract Class: Members can have public, protected, default, or private access.
+Interface: All members are implicitly public.
+
+23. Singleton Class in Java:
+A Singleton class in Java means irrespective of the number of times we are trying to create instance of the class, it will have
+only single instance.
+A Singleton class is a class that can have only one object (an instance) at a time. 
+The purpose of a Singleton class is to control object creation, limiting the number of objects to only one We can achieve it through below steps:
+1. private variable for the instance
+2. private  constructor
+3. class static method accessing the instance
+Two types of Initialization: EAGER Initialization, LAZY Initialization
+
+Disadvantages:
+i)Hidden Dependencies and Tight Coupling Due To Global Access Point as in the getInstance method we don't have any parameters or 
+refrence
+ii)Difficult Unit Testing
+iii)Issues with Concurrency and Scalability
+
+When to use:
+The Singleton pattern is best used as a last resort in modern Java development. If you find yourself thinking, "I need only one instance of this class," your first thought should be: "Can a Dependency Injection framework handle this for me?" 
+If the answer is no, and the other conditions (no mutable state, a truly unique resource) are met, then a Singleton might be a justifiable choice.
+
+24. Why Java does not support multiple inheritance through classes but through Interfaces?
+Java does not support multiple inheritance through classes due to Diamond Problem.
+Suppose a class A has a method doSomething();
+Class B and Class C inherits Class A and provides their own implementation.
+Now as part of multiple inheritance, if Class D inherits both Class B and C.
+Now, if you create an object of Class D and call d.doSomething(), which version of the method should be executed?
+This ambiguity is called as a Diamond Problem.
+
+Class D extends B,C - Java Compiler does not support this syntax.
+
+Java supports multiple inheritance through Interfaces?
+A class can implement multiple interfaces.
+Interfaces, by their nature, contain abstract methods (methods without a body) that must be implemented by the class.
+Therefore, there is no ambiguity. The inheriting class is forced to provide its own, single implementation for the inherited methods.
+
+25. Object Class:
+It's the ultimate superclass of all other classes.Every class, whether it's a built-in class or a class you create, is a direct or indirect subclass of Object.
+some object class methods- toString() , equals(Object obj), hashCode() , protected Object clone()
+
+26. So why we should override Object class's equals method and provide our own implementations.
+The Default behaviour of the Object class's equals(Object obj) method in the java.lang.Object class has the same behavior as the == operator. It checks for reference equality. This means it only returns true if both object references point to the exact same object in memory.It should compare the content not the references, that's why we need to provide our own implementations
+
+Best Practice:
+// Overridden equals() method for content comparison
+    @Override
+    public boolean equals(Object obj) {
+        // 1. Check for reference equality (optimization)
+        if (this == obj) {
+            return true;
+        }
+
+        // 2. Check if the object is null or of a different class
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // 3. Cast the object to the correct type
+        PersonWithEquals other = (PersonWithEquals) obj;
+
+        // 4. Compare the relevant fields
+        return this.age == other.age && Objects.equals(this.name, other.name);
+    }
+	
+27. Basic diff between Member Inner Class, method local Inner Class and static nested Inner Class
+Member Inner Class:
+Definition: A class defined as a member of another class, similar to how variables and methods are members. It is not declared with the static keyword.
+
+Access to Outer Class: It has direct access to all members (static and non-static, including private) of the outer class. It is strongly tied to an instance of the outer class.
+
+Instantiation: You must first have an instance of the outer class to create an instance of the member inner class.
+
+Method-Local Inner Class:
+Definition: A class defined within a method, a constructor, or a block of code.
+
+Access to Outer Class: It can access all members of the outer class. Additionally, it can access local variables of the method, but only if they are declared as final (or are effectively final in Java 8 and later).
+
+Instantiation: It can only be instantiated from within the method or block where it is defined. It is not accessible from outside that scope.
+
+Static Nested Inner Class:
+Definition: A class defined as a member of another class, but with the static keyword.
+
+Access to Outer Class: It can only access the static members (methods and variables) of the outer class. It does not have access to the instance members because it is not associated with an instance of the outer class.
+
+Instantiation: You can create an instance of a static nested inner class without an instance of the outer class.
+
+28. String vs. StringBuffer vs. StringBuilder
+String is an immutable object.
+String is slow for concatenation.
+It is generally used for fixed, constant data.
+
+StringBuffer is mutable in nature
+StringBuffer is slower than StringBuilder.
+StringBuffer is thread-safe and is generally used in Multi-threaded environment.
+
+StringBuilder is also mutable in nature
+StringBuilder is the fastest
+But StringBuilder is not thread-safe and is generally used in a single-threaded environment.
+
+29. How to create your own immutable class in Java?
+i) Lock down the class: Make the class final. No one gets to inherit from it and introduce mutable behavior. 🚫
+
+ii) Lock down the fields: Make all fields private and final. They get one shot at initialization, and that’s it. 🔒
+
+iii)No shortcuts: Don't provide any setter methods. The state is fixed. 🙅‍♂️
+
+iv)The Ultimate Safeguard: This is the part that separates the pros from the rest. For any mutable fields (like Date or List), you must provide defensive copies in both the constructor and the getter. 
+This ensures outside code can't get a reference and modify your internal state. 🛡️
+
+30. StringJoiner , String class join() method.
+The StringJoiner class, introduced in Java 8, is a utility for working with delimiters in a concise way. Instead of using the + operator, it allows you to easily set a prefix, suffix, and a delimiter between elements."
+
+join(): String.join() is a static utility method. You don't need to create an object to use it. You simply call it directly on the String class itself (String.join(...)). Its purpose is to perform a simple, one-off task of joining a collection of elements
+
+31. Array:
+Array in Java is a data structure which has a fixed size and contains sequential collection of same data types.
+We need to declare the size of an array while creating it. Once declared, we cannot change the size of an array.
+
+32. MultiDimensional Arrays:
+A multi-dimensional array is essentially an array of arrays. It allows you to store data in a grid-like or tabular format.
+Visualize it as rows and columns int arr[i][j] ---> i means rows and j means columns
+
+33. Jagged Arrays:
+Jagged Array is a 2d-array but unlike 2d arrays, in a jagged array, each row has different number of columns.
+Syntax:
+int jaggedArr[][] = new int[3][];
+    jaggedArr[0] = new int[2];
+    jaggedArr[1] = new int[3];
+    jaggedArr[2] = new int[5];
+	
+34. Association, Aggregation and Composition
+Association represents the uni-directional or bi-directional relationship between two classes
+where object of one class can interact with object of another class.
+
+Aggregation is a type of association where it is considered to be a weak association
+because the contained object here b1 for example, can survive without the container object (library)
+It is because the object is not created inside the class rather it is created outside and then
+send as a reference to the other class
+
+Composition is a type of association where it is considered to be a strong association
+because the contained object cannot survive without the container object. 
+It is because the object is created insdie the class rather than sending it as a reference like we did in Aggregation.
+
+Basically in Composition, inside the container class, we create the object of the other class 
+so when we destroy the container class's object, automatically the contained object also gets destroyed and we can't 
+access it.
+
+35. Memory Management:
+Memory management is the process of managing the allocation, dellocation of the memory for efficient flow of the program.
+In Java, it is automatically managed by the JVM.
+
+Important Components of Memory Management in Java:
+i)Heap Memory:
+Heap Memory is a large memory pool which is used for dynamic memory allocation i.e. memory allocation at runtime.
+Heap Memory stores objects, instance variables, arrays, static variables, String pool etc.
+Heap Memory is global for the entire application and can be shared by many threads.
+Heap Memory is managed entirely by the Garbage Collector, any object which has no longer any reference pointing to it,
+garbnage collector reclaims it's memory.
+When we use new MyObject() the MyObject instance is created on the Heap.
+
+ii)Stack Memory:
+Stack Memory is basically used for static memory allocation.
+It generally stores the Method's Stack frames(which are basically method calls,
+for each method call, a stack frame is inserted into the thread's stack).
+Stack frames consists of:
+Local Variables, returned address of the method call, references to objects which are stored on Heap. 
+As soon as the method gets executed completely, the stack frame also gets removed from the memory including the local variables etc etc.
+Note: The objects on the Heap that were referenced by these local variables are not destroyed
+
+iii)Local Variables: Variables which are declared inside the method, constructors.
+These variables are in general stored in Stack Memory or method's stack frames.
+
+iv)Object: Objects are always stored in the heap memory. Their existence is irrespective of the method in which they are created.
+Objects are instance of a class
+
+v)Dynamic Object Reference: A variable which holds the memory address of the object which is stored in the Heap.
+The actual object it points to is allocated dynamically at runtime using the new keyword, hence the term "dynamic object reference.
+The variable is stored in the Stack Memory.
+
+36. Garbage Collector in Java:
+i)Garbage Collector is basically Java's system for automatic memory management
+ii)It finds and destroy the objects in the Heap which are no longer reachable and hence, reclaims the memory.
+iii)The Java Heap is basically divided into 2 parts - Young Gen and Old Gen.
+iv)The GC focuses most of it's effort on Young Gen where most of the objects die young.
+v)System.gc() - We can use this to explicitly tell the JVM that it should run the Garbage Collector. 
+But it totally depends on the JVM to run the Garbage Collector and using this is not recommended in production environments.
+
+37. JVM Memory Allocation:
+i)JVM is allocated memory by the OS
+ii)JVM then, manages the memory based on the Heap size, which we can alter using -Xmx and that too depends on the system's RAM.
+iii)When a new object is created (new Object()), the JVM allocates space for it in the Heap (usually the Young Generation).
+iv)If there isn't enough space, the JVM will pause the application and run the GC to free up space
+v)If that is not working, it will throw the OutofMemoryError and application will terminate.
+
+38. Memory Leaks in Java:
+i)Avoid static collections in Java or Excessive use of static fields                 
+For Objects associated with these static fields, it becomes very difficult for the GC to reclaim the memeory of those objects.
+As static fields lifetime is tied to the Class Loader—which is typically for the entire duration of the application.                                                                                                    
+ii)Avoid non-static inner classes and use static nested inner class
+iii)Proper use of equals and hashcode is needed to avoid HashMap leaks
+iv)Closing the resources & collections. Use try-with-resources
+If you open a database connection, a file stream (InputStream/OutputStream), or a network socket, 
+and forget to call its close() method, the resource might remain active and unreleased. 
+This often prevents the underlying memory buffers from being collected. 
+v)Go for Weak Reference by using WeakHashMap.
+
+39)final keyword, abstract keyword, super keyword.
+Variable:	
+final int X = 10;	
+Makes the variable a constant. Its value can only be initialized once and cannot be changed later. 
+Must be initialized either at declaration or within a constructor/initializer block.	
+Method:	
+public final void show() { ... }	
+Prevents the method from being overridden by any subclass. 
+This ensures that the method's implementation remains consistent across all inheritors.	
+Class:	
+final class Utility { ... }	
+Prevents the class from being inherited (extended) by any other class. 
+This is often done for security or to ensure an immutable design (e.g., the String class is final).
+
+abstract keyword:
+abstract keyword is used alongside a method and a class. 
+Method:
+An abstract method is a method with no body that is no implementation and only declaration.
+An abstract method is always declared inside an abstract class
+Class:
+An abstract class is a class which can have both abstract as well as non-abstract method
+An abstract class cannot be instantiated
+A class which extends the abstract class, needs to override the abstract methods and provide it's implementation
+
+super keyword:
+super keyword is used to access the parent class variables
+super keyword is used to call the parent's class constructor, given the super keyword should be
+the first statement in the child class's constructor.
+super keyword is also used to call the parent class's method
+
+40)final vs finally vs finalize:
+i)final: It is a non-access modifier which is used alongside variable, method and class to restrict the user-defined
+ii)finally: It is an optional block of code which is used during exception handling for closing connections, resources, filestreams.
+It is executed irrespective of any exception is thrown or not.
+iii)finalize: It is a protected method of the Object class which was introduced as a method for cleaning up objects
+before they are destroyed by the GC.
+It is depreciated in Java 9 and now modern approaches like try-with-resources and Cleaner API are used where connections gets closed automatically.
+Key Issue: There is no guarantee that finalize() will ever run, or if it does, exactly when it will run, making it unsuitable for essential cleanup.
+
+41)Static Keyword:
+i)Static Keyword is a non-access modifier used for memory management.
+ * It can be applied to variables, methods, nested inner classes, blocks, and interfaces.
+ * When a number is declared static, it belongs to the class rather than to any specific instance
+ * It means that a single copy of static member is shared among the class and all of its instances.
+
+ii) Static Variable:
+Static Variable also belongs to the class and they cannot access non-static variables.
+this or super keywords cannot be used inside a static method.
+Commonly used as helper methods/utility methods.
+
+iv) Static Blocks:
+Static block is a block which is used for initializing the static variables.
+It gets called whenever the class gets loaded in the memory
+It cannpot access non-static or instance variables
+
+v) Static nested class:
+It is an inner class declared using the static keyword
+It can access only the static members of the OuterClass.
+TO access the inner static nested class, we don't need to create OuterClass objects
+
+Use this syntax:
+OuterClass.InnerClass innerClassObj = new OuterClass.InnerClass();
+innerClassObj.display();
+
+42) Can class be final or final static
+i)Class can be final it just means the class cannot be inherited, generally used to create buikt-in immutable class
+ii)A top-level class can never be static because static keyword for members meant it belongs to the class itself.
+But that cannot be true for a top-level class as there is no outer class to which this class can belong to. So Java does not allow this.
+However a nested inner class can be static not a top level class
+
+43)Why Static members are not able to access non-static members but the opposite is possible?
+It is because static members gets loaded when the JVM loads the class in the memory.
+At this point of time, an instance is not created.
+Also, for static members, there is no object reference,
+But, the non-static members are loaded when an instance of the class gets created.
+When they gets loaded in the memory, they already know the class information, so they can 
+easily access the static members.
+
+44)this keyword in Java:
+this keyword is a reference keyword which is generally used for:
+i)this keyword is used to resolve variable shadowing -> this.x=x;
+ii)this keyword is used to return current object
+Class obj1 = new Class();
+Class obj2 = obj1.getObject(); -> 
+Class.getObject(){
+  return this;
+}
+iii) this keyword is a;so used for Constructor Chaining
+//this must be the first statement
+Class(){
+  this(100);
+  sout("Default Constructor");
+}
+Class(int x){
+  sout("Parameterized Constructor");
+  sout(x);
+}
+
+iv) this keyword is also used to pass the current class object
+Class obj1 = new Class();
+obj1.show(this);
+void show(Class demoObj){
+   demoObj.display();
+}
+void display(){
+   sout("Display Method Gets Executed");
+}
+
+45)enum keyword in Java:
+Enum keyword in Java is a special type of class that defines fixed set of constants.
+Enums are implicitly final
+Enums can have: fields, constructors, methods
+Enums implemets interfaces but do not extend classes as they alreadt extend java.lang.Enum
+Enums cannot be instantiated using new keyword
+Enum constants are public, static, final by default
+Enum constructors are private by default
+
+46) Why enums are used instead of constants:
+Type safety (cannot assign invalid values)
+
+class AppConstants{
+    public static final String STATUS_SUCCESS = "SUCCESS";
+	public static final String STATUS_ERROR = "ERROR";
+}
+
+public class TestEnum{
+	public static void main(String[] args) {
+		Status status = Status.SUCCESS;
+			
+		// status = "INVALID"; //  Compie-time error
+		// Only valid enum constants can be assigned
+		System.out.println("Status: " + status);
+	}
+}	
+
+47) transient Keyword:
+	- It is applied to instance variables to indicate that tehy should not be serialized when an object is converted into a byet stream
+	- Common use case: Sensitive data like passwords should not be serialized because serialization typically converts objects 
+	  into a format (plain text or easily readable streams) that can be stored or transmitted.
+	- If such data is serialized, it can lead to security risks, as attackers could read or reuse the information from the serialized 
+	  file or  stream
+
+48)Scanner class in Java:
+Scanner class:
+It is used to read and parse input from various sources such as Keyboard, file or String.
+It has in-built tokenization and parse typing
+It has many methods to read different data types like nextInt(), nextDouble(), next()
+It has many methods to check the availability of data like hasNext(), hasDouble()
+It is not thread-safe
+It internally uses a regular expression engine, which is like an overhead for tokenization
+
+49) Why does nextLine() seem to "skip" input after calling nextInt() or nextDouble() ?
+Because Scanner uses whitespace as a delimiter, methods like nextInt() consume only the token (e.g., 42)
+and leave the newline (\n) in the buffer. The next call to nextLine() immediately consumes that leftover newline
+and returns an empty string - it looks like input was skipped, but it's just the newline being read.
+
+Issue:
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt();
+String line = sc.nextLine();
+
+Fix:
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt();
+sc.nextLine();
+String line = sc.nextLine();
+
+50)BufferedReader class in Java:
+BufferedReader class in Java is part of an java.io package
+It is used to read data from a character-input stream.
+It reduces the overhead in performance by reducing the number of I/O operations.
+We can think of it like a middleman with a storage bin. Instead of going to the source file for every single character, 
+it grabs a large chunk of data at once and stores it in an internal buffer
+While it has a default size (usually 8 KB), you can specify a custom size depending on your needs.
+
+To use it we wrap it around a FileReader
+
+BufferedReader bufferedReader = new BufferedReader(new FileReader("sms.txt"));
+BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Acer\\Documents\\testing.txt");
+
+
+50)Scanner class vs BufferedReader class in Java
+Feature:			BufferedReader   			Scanner
+Speed:				Very fast (large buffer)	Slower (parses data using regex)
+Data Types:			Reads only Strings			Can parse primitives (nextInt(), etc.)
+Thread Safety:		It is synchronized 			Not synchronized
+Use Case:			Reading large text files	Parsing user input or small files
+
+51)Why BufferedReader/BufferedInputStream is faster than a FileReader/FileInputStream
+Because FileReader for fetching 8kb of data for each character byte, it will make a trip to the disk.
+But in case of BufferedReader, it loads a default 8kb of data from the disk at once which is thousands times faster.
+Our code will use that data and if more data is there to be fetched it will make more trips but in every way,it is a 
+lot faster than fetching data from the disk.
+Fetching something from the memory(RAM) is way faster than fetching it from the disk as BufferedReader maintains able
+memory buffer for fetching data
+
+52)FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream
+FileInputStream, FileOutputStream:
+These are low-level byte streams used to read and write raw binary data (8-bit bytes) directly 
+from and to a file on the physical disk.
+
+These are high-level wrapper streams (also known as Filter Streams) that sit on top of a FileInputStream or FileOutputStream to provide a memory buffer.
+Instead of hitting the disk for 1 byte, BufferedInputStream reads a large block (typically 8KB) into a memory array (RAM) all at once. Your application then reads from that fast RAM instead of the slow disk.
+
+53)Serialization/Deserialization in Java ?
+Serialization is the process of converting an object's state into a byte stream.
+ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))
+out.writeObject(user);
+
+Deserialization is the process of converting/recreating the object from the byte stream.
+ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))){
+User deserializedUserObj = (User)in.readObject();
+
+54)Regular Expressions in Java:
+A Regular Expression is a powerful string of characters that forms a search pattern. In Java, it is used to perform "Pattern Matching"—searching, editing, or manipulating text based on complex rules.
+
+The Java Regex Engine (java.util.regex)
+Java uses three main components to handle regex:
+
+Pattern Class: The compiled representation of a regex. To improve performance, you "compile" a pattern once and reuse it.
+Matcher Class: The engine that interprets the pattern and performs match operations against an input string.
+PatternSyntaxException: Thrown if the regex syntax is invalid.
+
+55)Building Blocks of a Regex Pattern
+Symbol,  Meaning
+^     Start of a string
+$     End of a string
+.     Any single character
+\d    Any digit (0-9)
+\w    Any alphanumeric character (plus underscores)
+\s    Any whitespace (space, tab, newline)
+*	  Zero or more of the preceding element
++     One or more of the preceding element
+?     Zero or one of the preceding element
+
+56)What are Quantifiers in Regex Patterns
+In Regular Expressions, Quantifiers are special symbols that specify how many times a particular character, group, or character class must appear in the input string for a match to occur.
+
+The Three "Modes" of Quantifiers:
+Greedy
+Reluctant(Lazy)
+Possessive
+
+Few Problems Solved on Regex Patterns:
+DuplicateWord Problem
+ExtractNumbers Problem
+GreedyVsLazyDemo
+ValidUsername
+ValidateAndExtractData
+
+57)Throwable, Error,Compiletime Error, RuntimeError and Exception in Java:
+Throwable class is the superclass of all errors and exception classes in Java
+Direct Subclasses: Errors, Exception.
+Any objects that are instances of this class can be thrown by the JVM.
+
+Error, Compiletime Error, RuntimeError:
+Error represents a serious problem in Java which leads to termination of the program and cannot be handled
+by a program. 
+Errors are almost fatal and beyond the programmer's control to handle at the runtime as this happens at the runtime.
+Eg- OutOfMemoryError, StackOverflowError.
+
+CompileTimeError, RuntimeError these are concepts, there is no certain class named on this.
+CompileTimeError is something which happens at the compile time due to syntax error.
+RuntimeError is any problem that happens while the program is running (after successful compilation). Under this big umbrella, you have two different paths:
+The Error Path: Serious, fatal JVM problems (like OutOfMemoryError).
+The Exception Path: Logic problems (like NullPointerException).
+
+Exception in Java:
+Exception is the unwanted or unexpected event which disrups normal flow of the code.
+Exeption Handling is a way/technique to handle these exceptions which will not disrupt the regular flow of our code.
+
+There are 2 types of Exception: i)Checked Exception ii)Runtime Exception
+Checked Exception: Exception which are checked at the compile-time.
+For Checked exception, we need to write extra code to handle that exception and even if we don't write,
+the compiler won't compile the program.
+
+Eg - ClassNotFoundException, IOException, FileNotFoundException, SQLException
+
+Unchecked Exception: Exception which occurs at the runtime are termed as Unchecked Exceptions.
+For Unchecked exception, if we don't write extra code to handle the exception, the compiler does not
+force us to write the extra code and without that code itself, it compiles the code.
+
+Eg - ArithmeticException, ArrayIndexOutOFBunds, NullPointer Exception etc.
+
+58)Difference between Error and Exception class in Java
+Nature:
+Error: Fatal/System-level. Indicates a failure in the JVM or environment.
+Exception: Logic-level. Indicates a problem in the code or external inputs.
+
+Recoverability:
+Error: Program usually terminates immediately
+Exception: Recoverable as program will not terminate if we handle the code which might throw an exception 
+
+Handle:
+Error: Cannot be handled within a program, never try to catch an error 
+Exception: Can be handled using different exception handling techniques such as try-catch, throw, throws, finally 
+
+59)Exception Handling Techniques in Java. Explain
+i)try-catch block:
+try-catch block is one of the techniques for exeption handling.
+Generally we put the try-catch block in some part of the code where we expect the exception to occur.
+
+- Java Virtual Machine starts executing the code inside the try block.
+- If an exception occurs, the remaining code in the try block is skipped, and the JVM starts looking for the matching  catch block.
+- If a matching catch block is found, the code in that block is executed.
+- After the catch block, control moves to the finally block (if present).
+- If no matching catch block is found the exception is passed to the JVM default exception handler.
+- The finally block is executed after the try catch block. regardless of whether an exception occurs or not.
+
+throw:
+throw keyword is used to throw an exeption explicitly.
+throw keyword is generally used inside a function
+It can throw both checked and unchecked exceptions
+throw keyword is generally used to throw custom exceptions.
+syntax of the throw keyword include the instance of the Exception to be thrown.
+It stops the current flow of execution immediately.
+
+throws:
+throws keyword is used to declare multiple exceptions alongside a method to let the caller method know 
+that this function might throw one of these listed exceptions
+throws keyword is used in the method signature itself.
+throws keyword is used to declare the checked exceptions only.
+It forces the caller to handle the declared exceptions.
+
+finally:
+finally block is always executed, regardless of whether an exception occurs or not.
+finally block is generally used to close databaseconnections , resources or in general for resource cleanup purposee.
+
+59)can we override static method and why?
+No, we cannot override static methods
+So static methods belongs to the class and static methods are loaded when class is loaded in the classpath which is also termed as early binding. At that stage, the compiler doesn't know what objects will be actually created on the heap at runtime, it only knows the type of the variable we have declared. So, because the static methods belongs to the  class, the compiler assumes that the method should be pulled from the class type of the reference variable so if it is 
+Parent obj = new Child(); 
+obj.display(); 
+It will only check what is the type of obj that is Parent and the compiler assues it is obj.display() but if it was method overriding, it would have checked the new Child() and would have executed child.display() 
+
+60)Young Gen(Eden Space, Survivor Space - S0,S1), Old Gen, Metaspace, PermGen (Part of Memory Management)?
+The Heap is where all the objects live: 
+It is divided into generations: Young Gen, Old Gen
+Young Gen:
+All the objects are created in Young Generation. 
+It is further divided into:
+Eden Space, Survivor Space 0(S0) and Survivor Space 1 (S1)
+When we create an object, it actually borns in the Eden Space.
+Then a Minor Garbage Collection happens and then it checks:
+for the objects which are no longer used, are deleted
+the objects which still survives, moves to S1
+Then another Minor GC happens, where the garbacge collector looks for the objects in Eden and S0.
+Again the objects which survives this , moves to S1, s0 is then cleared entirely
+
+Old Gen:
+Once an object survives enough rounds of Garbage Collection in S1. 
+The default is usually 15 rounds of cycle(of garbage collection), 
+then that object gets promoted to the Old gen.
+This area is much larger than the Young Gen.
+When it fills up, a Major GC (or Full GC) occurs, which is much slower and "stops the world 
+
+61)What happens during object promotion to Old gen ?
+i)Primary Trigger:
+When an object in the Young Gen survives a Minor GC, the JVM increments the count of it like the age of an object.
+Now, the threshold of it is by default 15. So, when after surviving multiple GC's, it breaks the threshold, the JVM
+promotes such an object to the Old gen
+ii)Emergency Trigger:
+Sometimes, even after a minor GC in Eden Space, 
+if the JVM sees the surviving objects are too big to fit into S0 or S1,
+it promotes those objects to old generation which is also termed as premature promotion
+iii)Large Object Trigger:
+Sometimes,the objects are so massive that the GC realizes that if these objects are moved into Eden Space,
+then a GC would happen immediately, so it directly promotes the object to the Old Generation.
+
+62)Mark and Sweep Algorithm, Issue with it and solution:
+Algorithm happens in 2 phases: Marking and Sweeping
+Marking:
+The JVM starts from a set of GC Roots(active threads, local variables on the stack, static variables)
+and then it follows each references to check if the object is still active.
+Each object has a hidden marked bit(either 0 or false)
+Whenever the JVM finds the reachable objects, it flips it's bit to 1 or true.
+At the end of this phase, all the reacheable objects will be set to 1
+
+Sweeping:
+Now, the JVM scans the heap and checks for the objects whose bit is still 0.
+The objects which are no longer used in our program(unreacheable) are the ones whose bit is still 0.
+JVM then reclaims those objects and adds the reclaimed memory to the Free list for future use. 
+
+There is an issue with the Mark and Sweep Algorithm: Fragmentation.
+After the "Sweep" phase, our memory might look like a slice of Swiss cheese—lots of small holes 
+where objects used to be.
+If you then try to create a very large array, the JVM might fail to find 
+a contiguous (connected) block of memory large enough to fit it, even if the total free space is plent
+
+The Solution: Most modern Java collectors use Mark-Sweep-Compact. They add a third "Compact" phase to "push" all surviving objects to one end of the heap, leaving one big, clean block of free space at the other end.
+
+
+63)PERMGEN, METASPACE:
+1. PERMGEN:
+- It is introduced in Java 7 or older versions.
+- It is part of the Heap Memory
+- It had a fixed maximum size within the heap(set by -XX:MaxPermSize).
+- It stored data like class metadata, static variables, constant pool
+
+Issue: The issue with PERMGEN was it used to run out of space which used to result in
+OutOfMemoryError whenever we loaded too many classes in the memory(common in SpringBoot framework applications)
+as it was part of the Heap Memory and had a fixed maximum size
+
+2. METASPACE:
+- It is introduced in Java 8 and used in latest versions as well.
+- It is part of the native memory or depends on the system's physical memory instead of heap memory
+- It stores data like class's metadata, 
+- It is auto-resizable as much as the system's physical memory allows
+- By moving class metadata out of the Heap and into Native Memory, the "PermGen Space" crash was virtually eliminated. 
+If you need more space for classes, the JVM just asks the Operating System for more RAM.
+
+
