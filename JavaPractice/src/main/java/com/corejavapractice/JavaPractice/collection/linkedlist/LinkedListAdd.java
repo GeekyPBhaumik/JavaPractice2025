@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.collection;
+package com.corejavapractice.JavaPractice.collection.linkedlist;
 
 import java.util.LinkedList;
 

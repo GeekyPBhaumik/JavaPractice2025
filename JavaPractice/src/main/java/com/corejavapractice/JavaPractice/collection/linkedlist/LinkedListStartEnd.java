@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.collection;
+package com.corejavapractice.JavaPractice.collection.linkedlist;
 
 //The "Header & Footer"
 //Scenario: Given a LinkedList of strings, add the string "START" to the beginning and "END" to the very end.

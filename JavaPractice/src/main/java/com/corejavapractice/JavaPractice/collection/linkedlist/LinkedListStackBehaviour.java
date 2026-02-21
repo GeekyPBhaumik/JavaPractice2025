@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.collection;
+package com.corejavapractice.JavaPractice.collection.linkedlist;
 
 //The "Undo Buffer" (Stack Behavior - LIFO/FILO)
 //Suppose,we are building a text editor. Every time a user types a word, it’s added to a list.

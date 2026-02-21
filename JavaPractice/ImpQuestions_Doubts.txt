@@ -539,11 +539,11 @@ public class TestEnum{
 	}
 }	
 
-47) transient Keyword:
+47)transient Keyword:
 	- It is applied to instance variables to indicate that tehy should not be serialized when an object is converted into a byet stream
-	- Common use case: Sensitive data like passwords should not be serialized because serialization typically converts objects 
+	- Common use case: Sensitive data like passwords should not be serialized because serialization typically converts objects
 	  into a format (plain text or easily readable streams) that can be stored or transmitted.
-	- If such data is serialized, it can lead to security risks, as attackers could read or reuse the information from the serialized 
+	- If such data is serialized, it can lead to security risks, as attackers could read or reuse the information from the serialized
 	  file or  stream
 
 48)Scanner class in Java:
@@ -575,7 +575,7 @@ String line = sc.nextLine();
 BufferedReader class in Java is part of an java.io package
 It is used to read data from a character-input stream.
 It reduces the overhead in performance by reducing the number of I/O operations.
-We can think of it like a middleman with a storage bin. Instead of going to the source file for every single character, 
+We can think of it like a middleman with a storage bin. Instead of going to the source file for every single character,
 it grabs a large chunk of data at once and stores it in an internal buffer
 While it has a default size (usually 8 KB), you can specify a custom size depending on your needs.
 
@@ -595,14 +595,14 @@ Use Case:			Reading large text files	Parsing user input or small files
 51)Why BufferedReader/BufferedInputStream is faster than a FileReader/FileInputStream
 Because FileReader for fetching 8kb of data for each character byte, it will make a trip to the disk.
 But in case of BufferedReader, it loads a default 8kb of data from the disk at once which is thousands times faster.
-Our code will use that data and if more data is there to be fetched it will make more trips but in every way,it is a 
+Our code will use that data and if more data is there to be fetched it will make more trips but in every way,it is a
 lot faster than fetching data from the disk.
 Fetching something from the memory(RAM) is way faster than fetching it from the disk as BufferedReader maintains able
 memory buffer for fetching data
 
 52)FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream
 FileInputStream, FileOutputStream:
-These are low-level byte streams used to read and write raw binary data (8-bit bytes) directly 
+These are low-level byte streams used to read and write raw binary data (8-bit bytes) directly
 from and to a file on the physical disk.
 
 These are high-level wrapper streams (also known as Filter Streams) that sit on top of a FileInputStream or FileOutputStream to provide a memory buffer.
@@ -661,7 +661,7 @@ Any objects that are instances of this class can be thrown by the JVM.
 
 Error, Compiletime Error, RuntimeError:
 Error represents a serious problem in Java which leads to termination of the program and cannot be handled
-by a program. 
+by a program.
 Errors are almost fatal and beyond the programmer's control to handle at the runtime as this happens at the runtime.
 Eg- OutOfMemoryError, StackOverflowError.
 
@@ -695,11 +695,11 @@ Exception: Logic-level. Indicates a problem in the code or external inputs.
 
 Recoverability:
 Error: Program usually terminates immediately
-Exception: Recoverable as program will not terminate if we handle the code which might throw an exception 
+Exception: Recoverable as program will not terminate if we handle the code which might throw an exception
 
 Handle:
-Error: Cannot be handled within a program, never try to catch an error 
-Exception: Can be handled using different exception handling techniques such as try-catch, throw, throws, finally 
+Error: Cannot be handled within a program, never try to catch an error
+Exception: Can be handled using different exception handling techniques such as try-catch, throw, throws, finally
 
 59)Exception Handling Techniques in Java. Explain
 i)try-catch block:
@@ -722,7 +722,7 @@ syntax of the throw keyword include the instance of the Exception to be thrown.
 It stops the current flow of execution immediately.
 
 throws:
-throws keyword is used to declare multiple exceptions alongside a method to let the caller method know 
+throws keyword is used to declare multiple exceptions alongside a method to let the caller method know
 that this function might throw one of these listed exceptions
 throws keyword is used in the method signature itself.
 throws keyword is used to declare the checked exceptions only.
@@ -734,16 +734,16 @@ finally block is generally used to close databaseconnections , resources or in g
 
 59)can we override static method and why?
 No, we cannot override static methods
-So static methods belongs to the class and static methods are loaded when class is loaded in the classpath which is also termed as early binding. At that stage, the compiler doesn't know what objects will be actually created on the heap at runtime, it only knows the type of the variable we have declared. So, because the static methods belongs to the  class, the compiler assumes that the method should be pulled from the class type of the reference variable so if it is 
-Parent obj = new Child(); 
-obj.display(); 
-It will only check what is the type of obj that is Parent and the compiler assues it is obj.display() but if it was method overriding, it would have checked the new Child() and would have executed child.display() 
+So static methods belongs to the class and static methods are loaded when class is loaded in the classpath which is also termed as early binding. At that stage, the compiler doesn't know what objects will be actually created on the heap at runtime, it only knows the type of the variable we have declared. So, because the static methods belongs to the  class, the compiler assumes that the method should be pulled from the class type of the reference variable so if it is
+Parent obj = new Child();
+obj.display();
+It will only check what is the type of obj that is Parent and the compiler assues it is obj.display() but if it was method overriding, it would have checked the new Child() and would have executed child.display()
 
 60)Young Gen(Eden Space, Survivor Space - S0,S1), Old Gen, Metaspace, PermGen (Part of Memory Management)?
-The Heap is where all the objects live: 
+The Heap is where all the objects live:
 It is divided into generations: Young Gen, Old Gen
 Young Gen:
-All the objects are created in Young Generation. 
+All the objects are created in Young Generation.
 It is further divided into:
 Eden Space, Survivor Space 0(S0) and Survivor Space 1 (S1)
 When we create an object, it actually borns in the Eden Space.
@@ -754,11 +754,11 @@ Then another Minor GC happens, where the garbacge collector looks for the object
 Again the objects which survives this , moves to S1, s0 is then cleared entirely
 
 Old Gen:
-Once an object survives enough rounds of Garbage Collection in S1. 
-The default is usually 15 rounds of cycle(of garbage collection), 
+Once an object survives enough rounds of Garbage Collection in S1.
+The default is usually 15 rounds of cycle(of garbage collection),
 then that object gets promoted to the Old gen.
 This area is much larger than the Young Gen.
-When it fills up, a Major GC (or Full GC) occurs, which is much slower and "stops the world 
+When it fills up, a Major GC (or Full GC) occurs, which is much slower and "stops the world
 
 61)What happens during object promotion to Old gen ?
 i)Primary Trigger:
@@ -766,7 +766,7 @@ When an object in the Young Gen survives a Minor GC, the JVM increments the coun
 Now, the threshold of it is by default 15. So, when after surviving multiple GC's, it breaks the threshold, the JVM
 promotes such an object to the Old gen
 ii)Emergency Trigger:
-Sometimes, even after a minor GC in Eden Space, 
+Sometimes, even after a minor GC in Eden Space,
 if the JVM sees the surviving objects are too big to fit into S0 or S1,
 it promotes those objects to old generation which is also termed as premature promotion
 iii)Large Object Trigger:
@@ -785,19 +785,19 @@ At the end of this phase, all the reacheable objects will be set to 1
 Sweeping:
 Now, the JVM scans the heap and checks for the objects whose bit is still 0.
 The objects which are no longer used in our program(unreacheable) are the ones whose bit is still 0.
-JVM then reclaims those objects and adds the reclaimed memory to the Free list for future use. 
+JVM then reclaims those objects and adds the reclaimed memory to the Free list for future use.
 
 There is an issue with the Mark and Sweep Algorithm: Fragmentation.
-After the "Sweep" phase, our memory might look like a slice of Swiss cheese—lots of small holes 
+After the "Sweep" phase, our memory might look like a slice of Swiss cheese—lots of small holes
 where objects used to be.
-If you then try to create a very large array, the JVM might fail to find 
+If you then try to create a very large array, the JVM might fail to find
 a contiguous (connected) block of memory large enough to fit it, even if the total free space is plent
 
 The Solution: Most modern Java collectors use Mark-Sweep-Compact. They add a third "Compact" phase to "push" all surviving objects to one end of the heap, leaving one big, clean block of free space at the other end.
 
 
 63)PERMGEN, METASPACE:
-1. PERMGEN:
+i)PERMGEN:
 - It is introduced in Java 7 or older versions.
 - It is part of the Heap Memory
 - It had a fixed maximum size within the heap(set by -XX:MaxPermSize).
@@ -807,12 +807,458 @@ Issue: The issue with PERMGEN was it used to run out of space which used to resu
 OutOfMemoryError whenever we loaded too many classes in the memory(common in SpringBoot framework applications)
 as it was part of the Heap Memory and had a fixed maximum size
 
-2. METASPACE:
+ii)METASPACE:
 - It is introduced in Java 8 and used in latest versions as well.
 - It is part of the native memory or depends on the system's physical memory instead of heap memory
-- It stores data like class's metadata, 
+- It stores data like class's metadata
 - It is auto-resizable as much as the system's physical memory allows
-- By moving class metadata out of the Heap and into Native Memory, the "PermGen Space" crash was virtually eliminated. 
+- By moving class metadata out of the Heap and into Native Memory, the "PermGen Space" crash was virtually eliminated.
 If you need more space for classes, the JVM just asks the Operating System for more RAM.
 
+64)Are User-defined Exceptions Compile time or Runtime exceptions ?
+User-defined exceptions are the custom exceptions which allows us to write a more maintainable and readable way of exception handling. The class we will be using for user-defined exception needs to extend Exception or RuntimeException
+class. If it's extends Exception class, it is a compile-time exception and if it extends RuntimeException class, it is a
+Runtime exception class.
 
+65)Rules of Exception-Handling with Method Overriding?
+Rule 1: Parent method declares NO exception
+If the superclass method does not declare an exception, the overriding subclass method cannot declare any Checked exceptions. It can, however, declare Unchecked (Runtime) exceptions.
+
+Rule 2: Parent method declares a Checked exception
+If the superclass method declares a checked exception, the subclass has three options:
+
+Declare the same exception.
+
+Declare a subclass (child) of that exception.
+
+Declare no exception at all.
+
+Illegal: The subclass cannot declare a broader (Parent) checked exception.
+
+66)@ExceptionHandler, @RestControllerAdvice Exeption-Handling
+@ExceptionHandler:
+It works only for the specific controller as we will be using a method with @ExceptionHandler annotation in the same controller
+High Maintainence code, High Redundancy as the same code we need to write in each Controller
+Unique code for a specific Endpoint
+
+Code:
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    public String getUser(@PathVariable String id) {
+        throw new ResourceNotFoundException("User not found");
+    }
+
+    // THIS ONLY WORKS FOR EXCEPTIONS THROWN IN THIS CLASS
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleLocalError(ResourceNotFoundException ex) {
+        return ResponseEntity.status(404).body("Local Handler: " + ex.getMessage());
+    }
+}
+
+@RestControllerAdvice:
+It works globally not only for a specific controller as we will be using a separate class where we can mention the types of Exception we want to handle and calling that exception from any controller will work
+Low Maintainence Code, Less Redundant as we write once to protect the whole application
+Standardized error handling for the whole API.
+
+Code:
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    // Handle specific custom exceptions
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex){
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+    }
+}
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUser(@PathVariable String id) {
+        UserDTO user1 = null; // Simulating a database lookup that failed
+
+        if (ObjectUtils.isEmpty(user1)) {
+            // Because this is a @RestController,
+            // Spring will intercept this throw and send it to your @RestControllerAdvice
+            throw new ResourceNotFoundException("User Not Found with ID: " + id);
+        }
+        return ResponseEntity.ok(user1);
+    }
+}
+
+67)Steps For Exception Handling
+1. Create a Custom Exception class
+2. Define a Standard Error Response
+3. Step 3: The Global Exception Handler
+
+68)Collection Framework in Java:
+The Collection Framework in Java is a unified architecture consisting of classes and interfaces designed for storing and manipulating data. Iterable and Collection are the root interfaces, which are implemented by structures like List, Set,and Queue. While Map is a core part of the framework, it is unique because it does not extend the Collection interface. Additionally, the framework includes the Collections utility class, which provides static methods for common tasks like sorting, searching, and synchronizing collections.
+
+69)Architecture of the Collection Framework:
+Architecture is divided into 2 categories: Collection hierarchy and Map hierarchy
+Iterable Interface:
+		Collection Interface: (Collection Interface extends the Iterable interface)
+          1)List 2)Set 3)Queue/Deque (interface)
+List: Classes -  1)ArrayList 2)Vector 3)Stack 4)LinkedList
+Set: Classes - 1)HashSet 2)EnumSet 3)LinkedHashSet 4)TreeSet
+Queue: Classes - 1)PriorityQueue
+  DeQue: Classes - 1)ArrayDeque 2)LinkedList
+
+Map Interface(It does not extend the Collection interface):
+ 1)Hashtable 2)HashMap 3)LinkedHashMap 4)TreeMap (Classes)
+
+70)List Interface:
+List is a sub-interface of the Collection interface.
+It allows ordered insertion of elements - element inserted first will be at index 0.
+It allows duplicates.
+It allows index-based access of elements.
+Most of the implementing classes allows null values.
+ArrayList, Vector, Stack, LinkedList implements the List Interface
+
+71)ArrayList: It is a class which implements the List interface
+i)It is dynamic in nature which means it can grow it's size automatically based on the number of elements
+ii)It allows duplicate elemets
+iii)It allows any number of null values.
+iv)It maintains the insertion order
+v)It is not thread-safe(for thread safe we use Vector or Collections.synchronizedList())
+vi)It allows random access of elements in O(1) time complexity.
+
+Internal Working of an ArrayList:
+Whenever an arraylist is created and the first element is added, internally an array of size 10 gets created.
+Whenever the 11th element is added, a new array with 50% more size gets created (New array = Old + (Old/2)).
+Then all the elements from the old array is copied into the new array.
+Then the old array is dumped and garbacge collected.
+
+72)Vector: It is a class which implements the List interface
+i)Vector internally uses an object array as ArrayList
+ii)Vector is dynamic in nature
+iii)Vector allows duplicate elements.
+iv)Vector allows as much as null values possible
+v)It maintains the insertion order
+vi)It is synchronized in nature and that's why slower than ArrayList
+vii)It also allows direct/random access of elements in O(1) time complexity using indexes
+
+Internal Working of Vector:
+It is totally similar to ArrayList apart from one difference:
+In Vector, whenever the 11th element is added, a new array double the size of the old array gets created.
+Then the elements of the old array gets copied into the new array.
+
+73)Stack: It is a class which extends the Vector class.
+i)It is also dynamic in nature.
+ii)It allows duplicate values.
+iii)It allows as much as null values possible.
+iv)It is also synchronized in nature as it extends the Vector class.
+v)It maintains LIFO order(Last-In-First-Out)
+vi)It maintains the insertion order.
+vii)ArrayDeque is more recommended than to use Stack.
+Because Stack extends Vector, it inherits methods that it shouldn't have, like add(index, element).
+This allows you to insert an element into the middle of a stack, which violates the LIFO principle.
+It is also slower as compared to ArrayDeque as it has some overheads due to inheriting the Vector class
+and synchronized nature.
+viii)Internal Working of Stack is totally similar to that of a Vector
+
+74)LinkedList:It is a class which implements the List and DeQueue interface
+It internally implements the Doubly LinkedList which has reference to two elements - previous and next element.
+It can be executed as List,Stack and a Queue.
+It is also dynamic in nature.
+It maintains the insertion order
+It allows duplicate elements.
+It allows null values.
+It is not synchronized in nature
+It does not allow random access we need to start from the beginning and traverse through each element
+to find the element. O(n) time complexity
+LinkedList has more memory overhead as every node has to store the element/data plus two pointers.
+Time Complexity is O(1) to add any element
+
+Internal Working of a LinkedList:
+It internally uses a private Inner Class Node.
+It has three fields item:
+The actual data, next: A pointer to the next node, prev: A pointer to the previous node.
+Head and Tail: The LinkedList class maintains two pointers: first (Head) and last (Tail).
+When we add a new element, a new Node object gets created,
+then the next pointer of the current last element is set to the new Node object and
+then the prev pointer of the new Node Object is updated to the old node
+
+
+75)How LinkedList acts both as a Stack and Queue?
+Because it implements Deque, you get extra methods that ArrayList doesn't have:
+addFirst() / addLast()
+removeFirst() / removeLast()
+peekFirst() / peekLast()
+So Stack works on LIFO principle and Queue works on FILO principle.
+Both we can achieve with the help of these methods
+
+76)Set:
+i)It is a sub-interface of the Collection interface.
+ii)It does not allow duplicate elements
+iii)It allows at most one null element
+iv)It does not maintain insertion order(Unordered collection of elements)
+v)It is implemented by classes like HashSet, LinkedHashSet, TreeSet
+
+77)HashSet:It is a class which implements the Set interface
+i)It does not allow duplicate elements
+ii)It allows at most one null element
+iii)It is not synchronized in nature
+iv)It does not maintain insertion order
+v)It internally uses HashMap and the concept of hashing
+
+Internally Working of HashSet:
+When the HashSet is instantiated (the constructor) - new HashSet(), it internally creates a HashMap.
+The 'add' Operation: When you call set.add(element), the HashSet actually calls map.put(element, PRESENT).
+The element we add becomes key in the Hashmap
+PRESENT is like a dummy object which is used to fillup the value section for each newly added element.
+Now whenever in the internal map, put method is executed, for the newly added element,
+internally the map calls the hashcode() method to generated the hashcode. After that based on some math formula and
+calculation, a bucket no. is given for that particular element.
+
+If in that bucket, an element is not existing, then the new element is added in the bucket directly
+If in that bucket, an element already exists, then the equals() method comes into picture, where it is checked
+new_element.equals(existingObject) -> if it is equal, then the element is just replaced in the bucket.
+if it is not equal, then the element is added in the same bucket(linking the old one with the new one)
+
+Time complexity of manipulation:O(1) - Average case(Fastest)
+Time complexity of traversing:O(n+h) -> n:no. of elements, h:no. of buckets
+
+78)LinkedHashSet:It is also a class which implements the Set Interface
+i)It does not allow duplicate elements
+ii)It maintains the insertion order as internally it uses Linkedlist
+iii)It allows at most one null value
+iv)Internal Structure: It internally uses a LinkedHashMap.
+This is important because a LinkedHashMap already combines a Hash Table (for $O(1)$ lookup) and a Doubly Linked List (for order).
+v)It is fast for iteration as compared to HashSet but it is slower for manipulation(insertion/deletion)
+vi)It is not synchronized in nature
+
+Time Complexity of manipulation:O(1) - Fast but slower than HashSet
+Time Complexity of traversing: O(n)
+
+79)TreeSet:
+i)It does not allow duplicate elements
+ii)It maintains the sorted order of elements
+iii)It does not allow null values
+iv)It internally uses a TreeMap and the TreeMap uses a Red Black Tree(Self-balancing tree)
+v)It is not synchronized in nature
+vi)Slower than HashSet and LinkedHashSet
+vii)It does not use hashCode() or equals(). It uses compareTo() or compare().
+If compareTo() returns 0, the element is considered a duplicate and not added.
+
+Internal Working of TreeSet:
+Similar to HashSet, a TreeSet internally uses a TreeMap.
+Whenever we add an element to the TreeSet, the element gets added as a key in the TreeMap
+where we keep a dummy object PRESENT in the value as part of each newly added element.
+It internally uses a Red-Black Tree which is like a self-balancing tree.
+It does not use hashing like hashcode() and equals() method but it uses Comparable(for natural ordering) and
+Comparator(for custom ordering).
+When we add an element, it compares the element with the currentNode.
+if(element.compareTo(currentNode)) ->
+negative - element will be added to the left of tree
+positive - element will be added to the right of tree
+0 - it means the element is a duplicate and it will not be added(but value for that key will be replaced
+but in a hashset value is always the same for every key - so value anyway will not be replaced)
+The Red-Black Tree algorithm performs "rotations" to re-balance itself when one branch becomes
+much longer than the other
+
+Time Complexity of Manipulation:O(logn)
+Time Complexity of Traversing:O(n)
+
+80)HashMap: It is a class which implements the Map Interface
+i)It stores the data in key-value pairs
+ii)It does not maintain the insertion order
+iii)It internally uses a Hashtable
+iv)It allows at most one null key and multiple null values
+v)If two different values with same key is inserted, it will replace the old value with the new one.
+vi)It is non-synchronized in nature
+
+Internal Working of HashMap:
+When we call map.put(key, value),
+internally based on the key, it's hashcode gets calculated.
+Then based on the hashcode and a math based formula, a bucket no. is calculated.
+A node gets created and then,
+if there is no element in the bucket -> new element gets added.
+if there is already an element in the bucket -> equals() method is executed, then
+if new_key.equals(existing_key) -> false (collision) -> the new element will be added in the same bucket using a linkedlist
+if new_key.equals(existing_key) -> true -> the new_key value will replace the exisitng_key value.
+(because key is the same here)
+map.put(2,5)
+map.put(2,6) -> as key is same, the bucket will contain the later added value of the key.
+
+Time Complexity: Manipulation (Put/Get/Remove): $O(1)$ average.
+Traversing: $O(n + h)$ (Elements + Buckets).
+
+81)LinkedHashMap: It is a class which extends the HashMap class.
+i)It maintains the insertion order
+ii)It internally uses the Hashtable and Doubly LinkedList
+iii)It is also non-synchronized in nature.
+iv)It allows at most one null key and multiple null values
+v)It is slower as compared to the HashMap as it contains 2 extra pointers
+
+Internal Working of LinkedHashMap:
+It internally uses the hashtable and doubly linkedlist.
+It works similar as the HashMap but the only difference is,
+suppose we have added an element first -> it will go to Bucket 5
+again  we add an element -> it goes to Bucket 7
+In Hashmap, there will be no connection between these 2 buckets.
+But in LinkedHashMap, these 2 buckets will be connected with a before and after pointer due to the Doubly LL.
+The Node in Bucket 7 has a before pointer pointing to the Node in Bucket 5.
+
+Time Complexity: Manipulation - O(1)
+Traversing - O(n)
+
+82)TreeMap:It is a class which implements the Map Interface
+i)It maintains the natural sorted order of elements like based on the value of the keys inserted
+ii)It is non-synchronized in nature
+iii)It does not allow any null key unlike HashMap
+iv)It internally uses a Red-Black tree i.e. a self-balancing tree
+v)it is slower as compared to HashMap, LinkedHashMap because it must navigate through the branches of a tree.
+vi)No Hashing: Unlike HashMap, it does not use hashing.It uses the compareTo() or compare() method to determine where a key belongs
+
+Internal Working of TreeMap:
+When we add an element in the TreeMap, the first element becomes the root node of the Tree.
+Then we add the next element, if new_key < existing_node: it goes into the left branch of the tree
+if new_key > existing_node: it goes into the right branch of the tree.
+if new_key = existing_key/node: value of the new_key will replace the value of the existing_key
+The Red-Black Tree itself performs rotations so that any one part of the tree is not becoming a long-chain.
+
+83)Is it possible to change the access order of a LinkedHashMap?
+Access Order of the LinkedHashMap can be changed:
+ * if we use a true flag in the constructor of the LinkedHashMap as below
+ * The most recent element in such a LinkedHashMap will be the recently touched one
+ * even if we update a key or try to get the value of the key, that element will become the latest element.
+
+84)Queues:It is an interface. It follows the FIFO(First-In-First-Out) principle.
+Suppose for example, a person at the front of ticket counter line gets the first ticket.
+
+We generally add any new element in a Queue from tail of the queue.
+
+Almost every queue(like priority queue) does not allow null value
+
+Almost every queue has 2 methods for execution:
+one throws exception if it fails
+other returns null/false if it fails
+Methods:
+Add -         add(e) (Throws exception),     offer(e)
+Delete -      remove() (Throws exception),   poll()
+top element - element()  (Throws exception), peek()
+
+85)Types of Queue:
+i)PriorityQueue
+ii)Linkedlist
+iii)Deque(interface extends Queue interface)
+      ArrayDeque implements Deque interface
+
+86)PriorityQueue:
+i)It is a queue which follows the natural sorting order.
+(If we print the PriorityQueue, it might give us the elements in a random order but
+if we peek the PriorityQueue, it will return the smallest element in the queue)
+ii)It is non-synchronized in nature
+iii)It does not allow null values. Adding a null value will give NPE as it won't be able to compare
+iv)The smallest element in this queue will always have the highest priority.
+v)It allows duplicate values.
+
+Internal Working of PriorityQueue:
+A PriorityQueue internally uses a Binary Heap(specifically Min-Heap by default)
+We visualize it as a tree but internally it uses a dynamic object[] array.
+For element at index i,
+2i+1 is the left child
+2i+2 is the right child
+(i-1)/2 is the Parent element
+
+When you call add() or offer(), the PriorityQueue follows these steps:
+Placement: The new element is placed at the first available spot at the end of the array (the bottom-right of the tree).
+Comparison: It compares itself with its Parent.
+The Swap: If the new element is smaller than its parent, they swap places.
+Repeat: This continues until the element finds a parent smaller than itself or it becomes the new Root.
+Removing an Element: "Sift-Down" (Heapify Down)
+
+When you call poll(), the PriorityQueue must maintain the tree structure:
+The Exit: The element at queue[0] (the root) is removed and saved to be returned.
+The Replacement: The last element in the array is moved to the empty Root position (queue[0]).
+Comparison: This new root compares itself with its two children.
+The Swap: It swaps places with the smallest of its children (to ensure the minimum stays at the top).
+Repeat: This "sifts down" until the element is smaller than both its children.
+
+Imagine your array is [10, 30, 20].
+You add(5).
+It goes to the end: [10, 30, 20, 5].
+It compares with parent 30 (at index 1). Since 5 < 30, they swap: [10, 5, 20, 30].
+It compares with parent 10 (at index 0). Since 5 < 10, they swap: [5, 10, 20, 30].
+
+Final Array: [5, 10, 20, 30]. The smallest is now at the top!
+
+Addition:O(log n)
+Subtraction:O(log n)
+peek:O(1)
+
+Reverse Order In PriorityQueue:
+We can use a Comparator to get the elements in a PriorityQueue in the reverse order i.e. max heap
+where the largest element will have the highest priority
+
+PriorityQueue<Integer> maxHeapPriorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+
+
+87)ArrayDeque:It is a class which implements the Deque interface
+i)It internally uses a resizable circular array
+ii)We can add elements both at the start and end of the array
+iii)It does not allow null values
+iv)It is non-synchronized in nature
+v)It allows duplicate elements
+vi)It is faster than Linkedlist as it is not having the overhead of maintaining 2 pointers
+vii)It is also faster than Stack
+
+Internal Working of ArrayDeque:
+It internally uses a dynamic array which is also termed as circular array.
+Initially it creates an array of size 16
+It basically maintains 2 variable pointers.
+In an ArrayDeque, the "pointers" are actually just two simple integer variables: head and tail.
+head: An int storing the index of the first element.
+tail: An int storing the index where the next element will be added.
+
+When we add an element to the front,
+the head doesn't shift all the other elements (which would be slow). Instead, it just calculates:
+head = (head - 1) & (elements.length - 1)
+It literally just moves the "start" marker one spot to the left!
+
+Imagine an internal array of size 8.
+Start: You add "A", "B", "C".
+head is at 0.
+tail is at 3.
+
+The "Circular" Moment: You decide to addFirst("Z").
+In a straight array, there is no space before index 0.
+In a Circular Array, the head pointer simply "jumps" to the very last index (Index 7).
+
+head = (head - 1) & (elements.length - 1) -> (0-1) & (7-1) -> 6
+Now your array looks like this:
+[A, B, C, _, _, _, _, Z]
+Index: 0, 1, 2, 3, 4, 5, 6, 7
+
+Even though "Z" is physically at the end of the array, logically it is the First element because the head pointer says so.
+How it stays dynamic:
+When head==tail happens, the dynamic array resizes it by doubling it's size
+Also, it copies the elements from the head->end(arr.length-1) to the new array from the old array.
+Then, it copies the elements from the start(0th index)->tail to the new array from the old array.
+Then again, when we add an element, the above logic resumes.
+
+So why it's circular because when we add elements,
+head goes back and tail goes forward and when the array is full we see head=tail
+
+88)How ArrayDeque can be used both as a Stack and as a Queue?
+i)ArrayDeque has methods like push(e) which will internally call addFirst()
+ii)It has methods like pop(e) which will internally call pollFirst()
+So suppose I added 2 elements "A","B" using push(e) 2 times -> "B" -> "A"
+then I removed 1 element using pop() -> It  will remove the topmost element tha is "B"
+In this way, it behaves like a STACK
+
+iii)Similarly for Queue:
+When we call offer(e) -> it executes addLast()
+When we call poll() -> it execvutes pollFirst()
+
+So, if I add 2 elements -> "A","B" -> Queue view -> "A" -> "B"
+If i call poll() -> "A" WILL BE REMOVED so first in first out rule is followed as "A" is added initially

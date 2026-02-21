@@ -1,4 +1,4 @@
-package com.corejavapractice.JavaPractice.collection;
+package com.corejavapractice.JavaPractice.collection.arraylist;
 
 //Write a method to swap the first and the last element of any given ArrayList
 
