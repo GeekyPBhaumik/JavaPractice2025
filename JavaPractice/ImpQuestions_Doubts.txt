@@ -749,8 +749,8 @@ Eden Space, Survivor Space 0(S0) and Survivor Space 1 (S1)
 When we create an object, it actually borns in the Eden Space.
 Then a Minor Garbage Collection happens and then it checks:
 for the objects which are no longer used, are deleted
-the objects which still survives, moves to S1
-Then another Minor GC happens, where the garbacge collector looks for the objects in Eden and S0.
+the objects which still survives, moves to S0
+Then another Minor GC happens, where the garbace collector looks for the objects in Eden and S0.
 Again the objects which survives this , moves to S1, s0 is then cleared entirely
 
 Old Gen:
@@ -758,7 +758,7 @@ Once an object survives enough rounds of Garbage Collection in S1.
 The default is usually 15 rounds of cycle(of garbage collection),
 then that object gets promoted to the Old gen.
 This area is much larger than the Young Gen.
-When it fills up, a Major GC (or Full GC) occurs, which is much slower and "stops the world
+When it fills up, a Major GC (or Full GC) occurs, which is much slower and "stops the world"
 
 61)What happens during object promotion to Old gen ?
 i)Primary Trigger:
@@ -1262,3 +1262,44 @@ When we call poll() -> it execvutes pollFirst()
 
 So, if I add 2 elements -> "A","B" -> Queue view -> "A" -> "B"
 If i call poll() -> "A" WILL BE REMOVED so first in first out rule is followed as "A" is added initially
+
+89)Iterator,ListIterator, forEach loops:
+Iterator:It is an interface which is used to iterate any Collections
+i)It iterates only in the forward direction
+ii)It can be used to remove any element while traversing the Collection
+iii)It cannot be used to add or replace any element
+iv)It has methods like hasNext(),next(),remove()
+
+ListIterator:It is a sub-interface of the Iterator interface which is used to traverse the List Interface
+i)It is bi-directional, can traverse both forward and backward
+ii)It is used to add,replace or remove an element in a list while traversing
+iii)It has access to indexes unlike Iterator
+iv)It has methods like hasPrevious(), previous(), hasNext(), next(), add(), replace(), remove(), nextIndex(), previousIndex()
+
+forEach:forEach loop is a clean way to write a for loop for traversing the collections
+i)It makes the code more readable.
+ii)Internally Java converts it into an Iterator
+iii)It cannot be used to remove any element while traversing the Collection
+
+90)Split-Iterator:
+A Spliterator is used to traverse and partition elements of a source. It is the engine behind Java 8 Streams, especially when you use .parallelStream().
+It runs on the principle of Divide and Conquer
+
+91)Fail-Fast and Fail-Safe Iterator:
+First of all, these are not specific iterators or any property of the iterators.
+These is the behaviour of an iterator based on the type of Collection we are using.
+Fail-Fast: Iterators will throw ConcurrentModificationException if we are trying to rmeove an element
+during traversal of certain Collection class.
+eg - ArrayList, HashSet, HashMap
+It works on the original copy of the data(collection class)
+
+Fail-Safe:Iterators will work fine and won't throw any exception if we try to remove an element
+while traversing the collection class.
+It works on the copy of the original data.
+Everytime we modify the collection, it creates a copy of the original data.
+eg - CopyOnWriteArrayList, ConcurrentHashMap
+It also creates a memory overhead.
+For eg - If there is a list of 1 million items, adding/removing one will result in creating the copy of 1 million items
+
+May work on outdated data if multiple threads are working simultaneously as it works on the copy of the original data
+and might not be aware of the modified data while traversing and doing modification on the list.
