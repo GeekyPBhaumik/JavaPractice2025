@@ -1274,7 +1274,8 @@ ListIterator:It is a sub-interface of the Iterator interface which is used to tr
 i)It is bi-directional, can traverse both forward and backward
 ii)It is used to add,replace or remove an element in a list while traversing
 iii)It has access to indexes unlike Iterator
-iv)It has methods like hasPrevious(), previous(), hasNext(), next(), add(), replace(), remove(), nextIndex(), previousIndex()
+iv)It has methods like hasPrevious(), previous(), hasNext(), set(), next(), add(), replace(), remove(), nextIndex(), previousIndex()
+Note: set method can only be called on a listIterator if previously we have called the previous or next method
 
 forEach:forEach loop is a clean way to write a for loop for traversing the collections
 i)It makes the code more readable.
@@ -1303,3 +1304,179 @@ For eg - If there is a list of 1 million items, adding/removing one will result 
 
 May work on outdated data if multiple threads are working simultaneously as it works on the copy of the original data
 and might not be aware of the modified data while traversing and doing modification on the list.
+
+92)Comparable vs Comparator:
+Comparable and Comprator both interfaces are used for sorting the objects in Java
+Comparable:
+It is used for natural sorting based on a single attribute
+It belongs to the java.lang package
+The original class needs to be updated to use Comparable
+Original class needs to implement Comparable
+It has a method int compareTo(T o).
+
+Comparator:
+It is used for custom sorting based on multiple attributes
+It belongs to the java.util package
+No need to update the original class as we can use an external class or java 8 techniques
+It has a method: int compare(T o1, T o2)
+
+Java 8: list.sort(Comparator.comparing(Student::getName));
+
+93)Collections.sort vs Arrays.sort:
+Collections.sort only applies on lists like ArrayList, LinkedList etc.
+Arrays.sort only applies on the arrays holding primitive values
+
+94)Collections class in Java:
+Collections is an utility class in Java Collection framework
+It belongs to the java.util package
+All the methods in a Collections class are static so we can directly call them
+using the Collections class name.
+For eg- Collections.sort(list);
+Collections class helps us to perform operations on lists.
+It has a private constructor so you cannot instantiate it
+It provides methods such as Collections.unmodifiableList(list) - which helps to make the collection class as unmodifiable
+It provides methods such as Collections.synchronizedList(new ArrayList<>()) - which helps in making the Collection class as Synchronized
+
+Utility static methods:
+sort
+reverse
+swap
+unmodifiableList
+synchronizedList
+
+95)Java 8 Features:
+The Final "Java 8 Master List"
+Lambda Expressions: The syntax change (->).
+Functional Interfaces: The logic behind Lambdas (e.g., Predicate, Function).
+Method References: The shorthand (::).
+Stream API: Functional processing of collections (filter, map).
+Collectors Class: The "landing zone" for Stream results (toList, groupingBy).
+Optional Class: The solution for NullPointerException.
+Default & Static Interface Methods: Interface evolution without breaking code.
+New Date/Time API: java.time (Immutable and Thread-safe).
+NIO Stream Support: Files.lines(), Files.walk().
+StringJoiner: Clean delimiter-based joining.
+JVM - Metaspace: Replacing PermGen for better memory management.
+HashMap Optimization: $O(n) to O(log n) using Trees for collisions.
+
+96)Functional Interface:
+Functional Interface is a type of interface which has only one abstract method.
+It can have multiple default and static methods
+It acts as a blueprint for Lambda Expressions
+Though not mandatory, adding an annotation @FunctionalInterface, tells the compiler to throw an exception
+when we add more than one abstract method
+
+Type of Functional Interface:
+i)Predicate:
+It is basically used for filtration.
+It takes an user input of type t and returns boolean
+method: boolean test(T t);
+Eg:
+Predicate<Integer> intPredicate = age -> age > 18; //IntPredicate can also be used here
+sout(intPredicate.test(25));
+
+ii)Function:
+It is basically used to transform one type to another
+It takes input of one type and returns another type
+method: R apply(T t)
+Eg:
+Function<String,Integer> strLengthFunction = msg -> msg.length;
+sout(strLengthFunction.apply("Hello");
+
+iii)Consumer:
+It basically performing an action (side-effect) without returning anything.
+It basically takes input and returns no result (like any data type)
+method: void accept(T t);
+Eg:
+Consumer<String> strConsumer = msg -> sout(msg);
+strConsumer.accept("Good Morning");
+
+iv)Supplier:
+It is basically used for generating or providing values without taking any input.
+It basically takes no input and provides output
+It takes no input but returns a result of type T(any data type)
+method: T get()
+Eg:
+Supplier<Integer> intSupplier = () -> (int)Math.random()*100;
+sout(intSupplier.get());
+
+If we need 2 input parameters,then
+We also have BiPredicate<T,U> BiFunction<T,U,R> and BiConsumer<T,U>
+in functional interfaces
+
+We also have IntPredicate, DoublePredicate to avoid the autoboxing overhead of using Generics
+
+97)Lambda Expression:
+Lambda Expression is an anonymous function which is used to implement the method defined in a
+functional interface.
+Syntax:(parameter)->{body}
+It reduces the boilerplate code and makes it easier to read
+It is memory efficent as we don't have to write an anonymous inner class which also creates a .class file.
+It also allows functional programming as it allows Stream API to pass behaviours to methods like filter, map etc
+
+Eg - Addition addition = new Addition(){
+       @Overide
+	   public int add(int num){
+		 return num+2;
+	   }
+	 }
+     sout(addition.add(4));
+
+Using Lambda Expression:
+Addition addition = num -> num + 2;
+sout(addition.add(4));
+
+If there is only paramater, no need to use (),
+If there is only single line, no need to use {}
+
+98)Method References:
+It is a shorthand for writing lambda expressions where we don't have any logic like +1 or a*2 and
+it is just we are using a class or an object to call methods.
+In such a case we use the operator :: (not sure if it's called double-colon)
+
+4 use-cases:
+i)Calling a static method:
+str -> Integer.parseInt(str);
+Using Method-Reference:
+Integer::parseInt;
+
+ii)When an object is already created outside the lamda expression and you just want to call a method
+of that particular object:
+List<String> names = new ArrayList<>():
+s -> names.add(s);
+Method Reference:
+names::add;
+
+iii)When we don't have an object yet but the first argument/param of our lambda expression becomes
+the target that calls the method:
+str -> str.startsWith("s");
+Method Refeence:
+String::startsWith;
+
+iv)Just creating an object:
+() -> new ArrayList();
+ArrayList::new
+
+It basically makes the code more precise and is considered as a best practice.
+
+Full Code Example:
+public class StaticMethodRefDemo {
+    public static void main(String[] args) {
+        // 1. Using Anonymous Inner Class (Old Way - Boilerplate)
+        Function<String, Integer> traditional = new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) {
+                return Integer.parseInt(s); // Calling static method
+            }
+        };
+        // 2. Using Lambda Expression (Java 8 - Shorter)
+        // Here, 's' is just a "pass-through" variable
+        Function<String, Integer> lambda = s -> Integer.parseInt(s);
+        // 3. Using Method Reference (Java 8 - Cleanest)
+        // We remove 's ->' because the compiler knows to pass the input
+        // directly into the static method parseInt()
+        Function<String, Integer> methodRef = Integer::parseInt;
+        // Testing the results
+        System.out.println(methodRef.apply("100") + 50); // Output: 150
+    }
+}
