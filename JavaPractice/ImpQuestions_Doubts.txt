@@ -1480,3 +1480,179 @@ public class StaticMethodRefDemo {
         System.out.println(methodRef.apply("100") + 50); // Output: 150
     }
 }
+
+99)Stream API:
+Stream API is a sequence of elements which performs aggregate operations.
+Here sequence of elements means one element gets processed at a time through the pipeline.
+Stream API doesn't modify or store any data like a data-structure.
+It only processes the data it takes from Collections, Arrays or I/O.
+
+Stream API performs 2 types of operations: Intermediate, Terminal Operations.
+
+Intermediate Operations:
+i)These are the type of operations which transforms the streams from one-form to another.
+ii)It means suppose a stream of numbers are taken now with the help of filter method, it is tranformed into a stream of even numbers
+iii)It always returns a Stream
+iv)These are chained so we can use multiple intermediate operations together
+v)Intermediate Operations are lazy because they don't actually do any work when you call them — they just build up a description of what needs to be done. Nothing executes until a terminal operation is called.
+
+Eg:filter(), sorted(), map(), flatMap(), limit(), distinct()
+
+Terminal Operations:
+Terminal Operations trigger the pipeline and either return a final result or perform a side-effect(like forEach which returns void).
+It works on the stream it receives from the intermediate operations.
+We can only execute one terminal operation per single stream api data processing
+Streams actually process the data when we hit a terminal operation
+
+Eg:collect(), forEach() ,reduce(), count(), findFirst(), max()
+
+Creating Streams:
+i)Can be created from the Collections/Arrays
+List<String> names = List.of("Alice", "Bob", "Charlie");
+Stream<String> stream1 = names.stream();
+
+ii)Can be created from values
+Stream<Integer> stream2 = Stream.of(1, 2, 3, 4, 5);
+
+iii)Primitive Streams
+IntStream intStream = IntStream.range(1, 6);// 1,2,3,4,5
+
+iv)Can be created from arrays
+int[] nums = {1, 2, 3, 4, 5};
+IntStream stream = Arrays.stream(nums);
+
+// Or for object arrays
+String[] names = {"Alice", "Bob", "Charlie"};
+Stream<String> stream = Arrays.stream(names);
+
+100)Explain few Intermediate and Terminal Operations:
+Intermediate Operations:
+filter():keeps the element matching the filter condition or matching the Predicate
+map():transforms the stream from one form to another form based on the map conditions
+distinct():removes the duplicates and returns a stream
+limit(): limits the stream to first N elements
+
+Terminal Operations:
+reduce():Folds/Combines all elements into one result. Sum, product, concatenation
+forEach():Performs action on each element. No return.
+collect():Most powerful terminal op. Gathers results into List, Map, Set, String.
+count():Returns number of elements in the stream after all filters.
+
+101)flatMap vs Map
+How to understand when to use what:
+Simple, whenever the lambda inside our map() returns an Array, Stream or Collection, that means we should use a flatMap
+as flatMap flattens each element from different streams and returns a single stream. Whereas map() in such a case would return a Stream of Streams or Stream of Arrays which is nested and not what we want.
+
+To put it cleanly:
+map() is fine when result is:
+Stream<String>
+Stream<Integer>
+Stream<Boolean>
+Basically Stream<any simple value>
+
+Switch to flatMap() when result becomes:
+Stream<String[]> — each element is an array
+Stream<List<String>> — each element is a list
+Stream<Stream<String>> — each element is another stream
+
+Code example:
+String[] sentence = {"Hello World","Good Morning","Let's Go For Walk"};
+        Arrays.stream(sentence).map(x->x.split(" ")).forEach(System.out::println);
+        //here split returns String[] so map won't work here as mapm will return Stream<String[]>
+        Arrays.stream(sentence).flatMap(x->Arrays.stream(x.split(" ")))
+                               .forEach(System.out::println);
+
+        //So map is getting a String[] here so at line 8 we have first converted sentence array
+        //into a stream and then the stream returns Stream<String[]> because split returns String[]
+        //and when we traverse through each element of the stream, it returns us the String references
+
+        //Similarly, inside flatMap what it can do is if you give it Stream<Stream<String>> instead of
+        //Stream<String[]> it will combine all streams into one stream and return us the desired result.
+        //So here, for converting that inside instead of using x->x.split(" "), we are using
+        //x->Arrays.stream(x.split(" "))
+        //Inside the flatMap-> we are converting String[] -> Stream<String>
+        //[By using Arrays.stream() - as it converts each element in an array into a Stream]
+
+101)Why Streams if it is not changing the speed of data processing?
+i)Changing the way of code from Imperative to Declarative.
+Imperative: We are telling the computer how to do like start from 0, check the condition, iterate by 1 as in for-lopp
+Declarative:We are telling the computer what to do like I need a filter of data from this dataset.
+ii)Boilerplat Reduction.
+iii)Also we can speed up the processing by using parallelStreams()
+iv)Streams uses laxy evaluation(process the data when we hit terminal operation)
+v)Helps us to write clean code for multiple operations using multiple chaining
+
+102)Parallel Streams:
+A normal stream processes the data sequentially like one element at a time.
+A Parallel stream divides the dataset into multiple chunks and processes the data using multiple threads and add all the data
+together at the end.
+A Parallel stream uses ForkJoinPool internally which maintains the pool of threads.
+A Parallel stream does not maintain the order as multiple threads works on multiple chunks of data
+
+Syntax:
+listNums.parallelStream().forEach(System.out::println);
+listNums.stream().parallel().forEach(System.out::println);
+
+103)Collectors Class:
+Collectors is a utility class in java.util.stream package.
+It is generally used in streams along with the collect() terminal operation.
+It is used to convert streams into list, set or map.
+It is also used for grouping by like, counting,joining, partitioningBy
+
+103)Optional class:
+Optional is a wrapper class introduced in Java 8 to handle NullPointerException in a cleaner way.
+Instead of returning null, methods return an Optional object which may or may not contain a value.
+Key methods are orElse() for default values, orElseGet() which is more efficient as it only evaluates the default when needed, ifPresent() to perform actions safely, and
+map() to transform the value.
+The key rule is to never use get() directly — always use orElse() or ifPresent() to safely unwrap the value."
+Creating Optional objects:
+i)Optional.of("Alice")
+ii)Optional.ofNullable("Alice")
+iii)Optional.empty()
+
+104)orElse vs oElseGet
+orElse - default value is evaluated always even when optional is not empty
+orElseGet - default value is evaluated only when optional is empty
+
+105)Default, Static Methods Introduced in Java 8:
+Default methods were intoduced in Java 8 to bring backward compatibility.
+Because before Java 8, all the methods in an interface were abstract by default which means no body no implementation
+So if there were 100 classes implementing an interface, that means if we add a new method in the interface, all those classes
+needs to override this newly added method. For this reason, default method was introduced where we an give a body and implementation
+to the newly added method and no need for all the implementing classes to override the method.
+Static methods were introduced as an utility method where these methods can directly be accessed using interface name.
+Static methods cannot be overriden.
+Diamond Problem: One of the issues where there are 2 interfaces with same method name and
+a class which implements both the interfaces. Now while overriding, the class gets confused which method to override.
+So in that case we need to use InterfaceName.super.methodName();
+
+106)New Date-Time API:
+New Date-Time API was introduced in Java 8 because of the issues present in the old java.util.Date package and java.util.Calender package.
+Issues:
+i)Mutable: Dates were mutable which caused a lot of issues in multi-threaded scenarios.
+ii)Not Thread-Safe: Multiple threads used to access a Date object which caused issues.
+iii)No Separation: No separate classes were present for Date, Time and Date+Time.
+iv)Poor API Design: Months were 0-indexed, January was 0 and December was equal to 11.
+So, in Java 8 a new java.time package was introduced to resolve these issues:
+In the new package, there were separate classes like:
+LocalDate for date
+LocalTime for time
+LocalDateTime for date-time
+Period for calculating the date differences
+Duration for calculating the time differences
+DateTimeFormatter for formatting/parsing dates
+If you implement any method on a Date object using plusDays(), then
+It will create a new Date object, the existing ones will stay the same.
+
+107)How to parse String to LocalDate?
+String date = "2026-03-15";
+LocalDate localDate = LocalDate.parse(date);
+
+108)What is a ChronoUnit?
+If we use Period to get the no. of days between 2 dates we will not get the exact no. of days.
+It will just minus the no. of days from first date and second date like 14-1  = 13.
+But if we will use ChronoUnit, it will give us the exact no. of days in between two dates like
+between 2024, 1, 1 and 2024, 3, 15 -> 74 days are there.
+
+long days = ChronoUnit.DAYS.BETWEEN(startDate, endDate);
+sout(days);
