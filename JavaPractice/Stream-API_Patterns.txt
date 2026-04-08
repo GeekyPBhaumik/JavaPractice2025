@@ -1,0 +1,171 @@
+Pattern 1 — Filtering elements
+When: "find elements that match a condition"
+java.filter(x -> condition)
+Examples:
+
+Filter even numbers
+Filter names starting with "A"
+Filter salaries greater than 50000
+
+
+Pattern 2 — Transforming elements
+When: "convert one type to another" or "extract a field"
+java.map(x -> transformation)
+.map(Employee::getSalary) // extract field
+.map(String::toUpperCase) // transform
+Examples:
+
+Convert names to uppercase
+Extract salary from Employee
+Get length of each string
+
+
+Pattern 3 — Flattening nested collections
+When: "get all elements from a list of lists" or "split each element into multiple"
+java.flatMap(x -> Arrays.stream(x.split(" ")))
+.flatMap(Collection::stream)
+Examples:
+
+Get all words from list of sentences
+Flatten List of Lists into single List
+
+
+Pattern 4 — Grouping into a Map
+When: "group by a field" or "categorize elements"
+java// Simple grouping
+.collect(Collectors.groupingBy(x -> x.getField()))
+
+// Group + count
+.collect(Collectors.groupingBy(x -> x.getField(), Collectors.counting()))
+
+// Group + extract field + find max
+.collect(Collectors.groupingBy(x -> x.getField(),
+         Collectors.mapping(x -> x.getOtherField(),
+         Collectors.maxBy(Comparator.naturalOrder()))))
+Examples:
+
+Group employees by department
+Group names by first character
+Group by length and count
+
+
+Pattern 5 — Splitting into exactly 2 groups
+When: "divide into two groups based on a condition" — true group and false group
+java.collect(Collectors.partitioningBy(x -> condition))
+Examples:
+
+Partition even and odd numbers
+Partition names longer than 4 characters
+
+
+Pattern 6 — Finding duplicates
+When: "find elements that appear more than once"
+Approach 1 — frequency Map:
+javaMap<T, Long> countMap = list.stream()
+        .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+List<T> duplicates = countMap.entrySet().stream()
+        .filter(x -> x.getValue() > 1)
+        .map(Map.Entry::getKey)
+        .toList();
+Approach 2 — HashSet trick:
+javaSet<T> seen = new HashSet<>();
+List<T> duplicates = list.stream()
+        .filter(n -> !seen.add(n))
+        .collect(Collectors.toList());
+
+Pattern 7 — Finding non-repeating elements
+When: "find elements that appear exactly once" — especially first non-repeating
+java// LinkedHashMap preserves insertion order — critical here
+LinkedHashMap<T, Long> map = list.stream()
+        .collect(Collectors.groupingBy(x -> x, LinkedHashMap::new, Collectors.counting()));
+map.entrySet().stream()
+        .filter(x -> x.getValue() == 1)
+        .map(Map.Entry::getKey)
+        .findFirst()
+        .orElse(null);
+Key point: Use LinkedHashMap when order matters — HashMap when order doesn't matter
+
+Pattern 8 — Finding max/min
+When: "find highest/lowest value"
+java// Using max() directly — O(n) single pass ✅
+.max(Comparator.naturalOrder())
+.max(Comparator.comparing(Employee::getSalary))
+
+// Using sorted + findFirst — O(n log n) avoid this ❌
+.sorted(Comparator.reverseOrder()).findFirst()
+
+Pattern 9 — Finding Nth highest/lowest
+When: "find 2nd highest, 3rd lowest etc."
+java.map(Employee::getSalary)
+.distinct()              // remove duplicates first
+.sorted(Comparator.reverseOrder()) // highest first
+.skip(N-1)               // skip N-1 elements
+.findFirst()
+.orElse(0)
+Examples:
+
+2nd highest salary → skip(1)
+3rd highest salary → skip(2)
+
+
+Pattern 10 — Counting with condition
+When: "count how many elements match a condition"
+javalong count = list.stream()
+        .filter(x -> condition)
+        .count();
+
+Pattern 11 — Calculating sum/average
+When: "find total or average of numeric field"
+java// Sum
+int sum = list.stream()
+        .mapToInt(Employee::getSalary)
+        .sum();
+
+// Average
+double avg = list.stream()
+        .mapToInt(Employee::getSalary)
+        .average()
+        .orElse(0);
+
+// Everything at once
+IntSummaryStatistics stats = list.stream()
+        .mapToInt(Employee::getSalary)
+        .summaryStatistics();
+
+Pattern 12 — Sorting
+When: "sort by one or multiple fields"
+java// Single field
+.sorted(Comparator.comparing(Employee::getSalary))
+
+// Descending
+.sorted(Comparator.comparing(Employee::getSalary).reversed())
+
+// Multiple fields
+.sorted(Comparator.comparing(Employee::getSalary)
+                  .thenComparing(Employee::getName))
+
+Pattern 13 — Collecting into different types
+When: "store results in List, Set or Map"
+java.collect(Collectors.toList())   // mutable list
+.toList()                       // immutable list Java 16+
+.collect(Collectors.toSet())    // unique elements
+.collect(Collectors.toMap(
+    x -> x,                     // key
+    x -> x.length()             // value
+))
+
+Pattern 14 — Joining Strings
+When: "combine all strings into one"
+java.collect(Collectors.joining(", "))           // delimiter only
+.collect(Collectors.joining(", ", "[", "]")) // delimiter + prefix + suffix
+
+Pattern 15 — Converting String to Stream of characters
+When: "work with individual characters of a string"
+javastr.chars()
+   .mapToObj(c -> (char) c)
+   .collect(...)
+Examples:
+
+Count character frequency
+Find non-repeating character
+Count vowels

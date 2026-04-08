@@ -30,6 +30,11 @@ public class CreatingStreams {
         intRangeStream.forEach(x-> System.out.print(x+", "));
         System.out.println();
 
+        //Creating stream from String
+        String message = "Good Morning";
+        IntStream messageStream = message.chars();
+        messageStream.forEach(System.out::println);
+
         // Reading lines from a file as a Stream
         try (Stream<String> lines = Files.lines(Path.of("G:\\Java 8 Stream API\\file.txt"))) {
             lines.forEach(System.out::println);
